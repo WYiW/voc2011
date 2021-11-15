@@ -1,0 +1,2220 @@
+BATCH_SIZE: 8
+PROBLEM:
+  TYPE: 2GM
+  UNSUPERVISED: False
+  RESCALE: [256, 256]
+  FILTER: intersection
+  MAX_PROB_SIZE: -1
+  NUM_GRAPHS: 3
+  NUM_CLUSTERS: 1
+  TEST_ALL_GRAPHS: False
+  TRAIN_ALL_GRAPHS: False
+GRAPH:
+  SRC_GRAPH_CONSTRUCT: tri
+  TGT_GRAPH_CONSTRUCT: tri
+  SYM_ADJACENCY: True
+  PADDING: 23
+TRAIN:
+  EPOCH_ITERS: 2000
+  START_EPOCH: 0
+  NUM_EPOCHS: 30
+  OPTIMIZER: SGD
+  LR: 0.0001
+  SEPARATE_BACKBONE_LR: False
+  BACKBONE_LR: 0.01
+  LR_DECAY: 0.2
+  LR_STEP: [20]
+  MOMENTUM: 0.9
+  RLOSS_NORM: 256
+  CLASS: none
+  LOSS_FUNC: hung
+EVAL:
+  EPOCH: 23
+  SAMPLES: 1000
+  CLASS: all
+BACKBONE: VGG16_bn
+GPUS: [0]
+DATALOADER_NUM: 2
+PRETRAINED_PATH: 
+NORM_MEANS: [0.485, 0.456, 0.406]
+NORM_STD: [0.229, 0.224, 0.225]
+CACHE_PATH: data/cache
+MODEL_NAME: vgg16_cie
+DATASET_NAME: voc
+DATASET_FULL_NAME: PascalVOC
+MODULE: models.CIE.model
+OUTPUT_PATH: output/vgg16_cie_voc
+STATISTIC_STEP: 100
+RANDOM_SEED: 123
+FP16: False
+CIE:
+  FEATURE_CHANNEL: 512
+  SK_ITER_NUM: 20
+  SK_EPSILON: 1e-10
+  SK_TAU: 0.005
+  GNN_LAYER: 2
+  GNN_FEAT: 2048
+  CROSS_ITER: False
+Start training...
+model on device: cuda:0
+Epoch 0/29
+----------
+lr = 1.00e-04
+Epoch 0    Iteration 100  6.19sample/s Loss=2.6145  
+Epoch 0    Iteration 200  6.35sample/s Loss=1.9309  
+Epoch 0    Iteration 300  6.27sample/s Loss=1.9063  
+Epoch 0    Iteration 400  6.28sample/s Loss=1.8888  
+Epoch 0    Iteration 500  6.31sample/s Loss=1.8606  
+Epoch 0    Iteration 600  6.35sample/s Loss=1.8088  
+Epoch 0    Iteration 700  6.33sample/s Loss=1.7664  
+Epoch 0    Iteration 800  6.32sample/s Loss=1.7470  
+Epoch 0    Iteration 900  6.28sample/s Loss=1.7045  
+Epoch 0    Iteration 1000 6.28sample/s Loss=1.7185  
+Epoch 0    Iteration 1100 6.30sample/s Loss=1.6524  
+Epoch 0    Iteration 1200 6.33sample/s Loss=1.6932  
+Epoch 0    Iteration 1300 6.26sample/s Loss=1.6259  
+Epoch 0    Iteration 1400 6.33sample/s Loss=1.5952  
+Epoch 0    Iteration 1500 6.32sample/s Loss=1.6152  
+Epoch 0    Iteration 1600 6.33sample/s Loss=1.5487  
+Epoch 0    Iteration 1700 6.33sample/s Loss=1.5557  
+Epoch 0    Iteration 1800 6.34sample/s Loss=1.5189  
+Epoch 0    Iteration 1900 6.31sample/s Loss=1.5623  
+Epoch 0    Iteration 2000 6.25sample/s Loss=1.5273  
+Epoch 0    Loss: 1.7421
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.3651±0.2629, r = 0.3651±0.2629, f1 = 0.3651±0.2629, cvg = 0.1084
+bicycle: p = 0.4682±0.2540, r = 0.4682±0.2540, f1 = 0.4682±0.2540, cvg = 0.7257
+bird: p = 0.5865±0.3170, r = 0.5865±0.3170, f1 = 0.5865±0.3170, cvg = 0.1418
+boat: p = 0.4461±0.3456, r = 0.4461±0.3456, f1 = 0.4461±0.3456, cvg = 0.2505
+bottle: p = 0.5401±0.3136, r = 0.5401±0.3136, f1 = 0.5401±0.3136, cvg = 0.1396
+bus: p = 0.5173±0.4177, r = 0.5173±0.4177, f1 = 0.5173±0.4177, cvg = 0.7142
+car: p = 0.5631±0.3245, r = 0.5631±0.3245, f1 = 0.5631±0.3245, cvg = 0.0761
+cat: p = 0.5594±0.2921, r = 0.5594±0.2921, f1 = 0.5594±0.2921, cvg = 0.1974
+chair: p = 0.4009±0.3228, r = 0.4009±0.3228, f1 = 0.4009±0.3228, cvg = 0.4895
+cow: p = 0.5444±0.2587, r = 0.5444±0.2587, f1 = 0.5444±0.2587, cvg = 0.6519
+diningtable: p = 0.4350±0.3578, r = 0.4350±0.3578, f1 = 0.4350±0.3578, cvg = 1.0000
+dog: p = 0.5620±0.2772, r = 0.5620±0.2772, f1 = 0.5620±0.2772, cvg = 0.0929
+horse: p = 0.5941±0.2570, r = 0.5941±0.2570, f1 = 0.5941±0.2570, cvg = 0.9495
+motorbike: p = 0.5323±0.2818, r = 0.5323±0.2818, f1 = 0.5323±0.2818, cvg = 0.5627
+person: p = 0.3580±0.2143, r = 0.3580±0.2143, f1 = 0.3580±0.2143, cvg = 0.0827
+pottedplant: p = 0.7140±0.2995, r = 0.7140±0.2995, f1 = 0.7140±0.2995, cvg = 0.2057
+sheep: p = 0.5893±0.2906, r = 0.5893±0.2906, f1 = 0.5893±0.2906, cvg = 0.2944
+sofa: p = 0.5556±0.3269, r = 0.5556±0.3269, f1 = 0.5556±0.3269, cvg = 0.9643
+train: p = 0.7146±0.3375, r = 0.7146±0.3375, f1 = 0.7146±0.3375, cvg = 0.6768
+tvmonitor: p = 0.7165±0.3659, r = 0.7165±0.3659, f1 = 0.7165±0.3659, cvg = 0.2442
+average accuracy: p = 0.5381±0.3059, r = 0.5381±0.3059, f1 = 0.5381±0.3059
+Evaluation complete in 27m 16s
+Predict time
+aeroplane = 0.0947±0.0060
+bicycle = 0.0992±0.0032
+bird = 0.0818±0.0032
+boat = 0.0771±0.0029
+bottle = 0.0889±0.0028
+bus = 0.0756±0.0020
+car = 0.0783±0.0031
+cat = 0.0905±0.0042
+chair = 0.0860±0.0037
+cow = 0.0961±0.0052
+diningtable = 0.0763±0.0005
+dog = 0.0902±0.0045
+horse = 0.0954±0.0058
+motorbike = 0.0860±0.0040
+person = 0.1055±0.0062
+pottedplant = 0.0771±0.0022
+sheep = 0.0868±0.0106
+sofa = 0.0823±0.0432
+train = 0.0698±0.0018
+tvmonitor = 0.0721±0.0021
+average time = 0.0862±0.0108
+gt perm mat cache deleted
+Epoch 1/29
+----------
+lr = 1.00e-04
+Epoch 1    Iteration 100  6.29sample/s Loss=1.5088  
+Epoch 1    Iteration 200  6.33sample/s Loss=1.5013  
+Epoch 1    Iteration 300  6.31sample/s Loss=1.4647  
+Epoch 1    Iteration 400  6.25sample/s Loss=1.4677  
+Epoch 1    Iteration 500  6.27sample/s Loss=1.4757  
+Epoch 1    Iteration 600  6.28sample/s Loss=1.4993  
+Epoch 1    Iteration 700  6.30sample/s Loss=1.4300  
+Epoch 1    Iteration 800  6.37sample/s Loss=1.4337  
+Epoch 1    Iteration 900  6.27sample/s Loss=1.4399  
+Epoch 1    Iteration 1000 6.39sample/s Loss=1.4033  
+Epoch 1    Iteration 1100 6.29sample/s Loss=1.4148  
+Epoch 1    Iteration 1200 6.34sample/s Loss=1.3622  
+Epoch 1    Iteration 1300 6.36sample/s Loss=1.4316  
+Epoch 1    Iteration 1400 6.32sample/s Loss=1.4076  
+Epoch 1    Iteration 1500 6.39sample/s Loss=1.3850  
+Epoch 1    Iteration 1600 6.27sample/s Loss=1.4121  
+Epoch 1    Iteration 1700 6.30sample/s Loss=1.3453  
+Epoch 1    Iteration 1800 6.30sample/s Loss=1.3892  
+Epoch 1    Iteration 1900 6.41sample/s Loss=1.3472  
+Epoch 1    Iteration 2000 6.26sample/s Loss=1.3656  
+Epoch 1    Loss: 1.4242
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.3875±0.2684, r = 0.3875±0.2684, f1 = 0.3875±0.2684, cvg = 0.1084
+bicycle: p = 0.4943±0.2561, r = 0.4943±0.2561, f1 = 0.4943±0.2561, cvg = 0.7257
+bird: p = 0.6222±0.3116, r = 0.6222±0.3116, f1 = 0.6222±0.3116, cvg = 0.1418
+boat: p = 0.4569±0.3582, r = 0.4569±0.3582, f1 = 0.4569±0.3582, cvg = 0.2505
+bottle: p = 0.6707±0.3212, r = 0.6707±0.3212, f1 = 0.6707±0.3212, cvg = 0.1396
+bus: p = 0.6238±0.4050, r = 0.6238±0.4050, f1 = 0.6238±0.4050, cvg = 0.7142
+car: p = 0.5843±0.3227, r = 0.5843±0.3227, f1 = 0.5843±0.3227, cvg = 0.0761
+cat: p = 0.5996±0.2846, r = 0.5996±0.2846, f1 = 0.5996±0.2846, cvg = 0.1974
+chair: p = 0.4082±0.3286, r = 0.4082±0.3286, f1 = 0.4082±0.3286, cvg = 0.4895
+cow: p = 0.5812±0.2612, r = 0.5812±0.2612, f1 = 0.5812±0.2612, cvg = 0.6519
+diningtable: p = 0.5100±0.3885, r = 0.5100±0.3885, f1 = 0.5100±0.3885, cvg = 1.0000
+dog: p = 0.6158±0.2717, r = 0.6158±0.2717, f1 = 0.6158±0.2717, cvg = 0.0929
+horse: p = 0.6267±0.2537, r = 0.6267±0.2537, f1 = 0.6267±0.2537, cvg = 0.9495
+motorbike: p = 0.5584±0.2768, r = 0.5584±0.2768, f1 = 0.5584±0.2768, cvg = 0.5627
+person: p = 0.3949±0.2246, r = 0.3949±0.2246, f1 = 0.3949±0.2246, cvg = 0.0827
+pottedplant: p = 0.7718±0.2841, r = 0.7718±0.2841, f1 = 0.7718±0.2841, cvg = 0.2057
+sheep: p = 0.6272±0.2836, r = 0.6272±0.2836, f1 = 0.6272±0.2836, cvg = 0.2944
+sofa: p = 0.5183±0.3566, r = 0.5183±0.3566, f1 = 0.5183±0.3566, cvg = 0.9643
+train: p = 0.7481±0.3286, r = 0.7481±0.3286, f1 = 0.7481±0.3286, cvg = 0.6768
+tvmonitor: p = 0.8745±0.2775, r = 0.8745±0.2775, f1 = 0.8745±0.2775, cvg = 0.2442
+average accuracy: p = 0.5837±0.3032, r = 0.5837±0.3032, f1 = 0.5837±0.3032
+Evaluation complete in 27m 7s
+Predict time
+aeroplane = 0.0943±0.0043
+bicycle = 0.0988±0.0037
+bird = 0.0817±0.0030
+boat = 0.0763±0.0023
+bottle = 0.0887±0.0029
+bus = 0.0760±0.0034
+car = 0.0778±0.0028
+cat = 0.0902±0.0045
+chair = 0.0853±0.0033
+cow = 0.0950±0.0053
+diningtable = 0.0770±0.0012
+dog = 0.0899±0.0048
+horse = 0.0947±0.0056
+motorbike = 0.0859±0.0034
+person = 0.1056±0.0059
+pottedplant = 0.0771±0.0032
+sheep = 0.0861±0.0050
+sofa = 0.0825±0.0030
+train = 0.0694±0.0015
+tvmonitor = 0.0716±0.0013
+average time = 0.0858±0.0103
+gt perm mat cache deleted
+Epoch 2/29
+----------
+lr = 1.00e-04
+Epoch 2    Iteration 100  6.31sample/s Loss=1.3418  
+Epoch 2    Iteration 200  6.34sample/s Loss=1.3384  
+Epoch 2    Iteration 300  6.37sample/s Loss=1.2921  
+Epoch 2    Iteration 400  6.29sample/s Loss=1.2973  
+Epoch 2    Iteration 500  6.26sample/s Loss=1.3124  
+Epoch 2    Iteration 600  6.28sample/s Loss=1.3511  
+Epoch 2    Iteration 700  6.34sample/s Loss=1.2685  
+Epoch 2    Iteration 800  6.39sample/s Loss=1.2865  
+Epoch 2    Iteration 900  6.29sample/s Loss=1.2825  
+Epoch 2    Iteration 1000 6.35sample/s Loss=1.2415  
+Epoch 2    Iteration 1100 6.26sample/s Loss=1.2586  
+Epoch 2    Iteration 1200 6.33sample/s Loss=1.2166  
+Epoch 2    Iteration 1300 6.35sample/s Loss=1.2922  
+Epoch 2    Iteration 1400 6.33sample/s Loss=1.2622  
+Epoch 2    Iteration 1500 6.39sample/s Loss=1.2474  
+Epoch 2    Iteration 1600 6.29sample/s Loss=1.2781  
+Epoch 2    Iteration 1700 6.31sample/s Loss=1.2117  
+Epoch 2    Iteration 1800 6.30sample/s Loss=1.2458  
+Epoch 2    Iteration 1900 6.38sample/s Loss=1.2249  
+Epoch 2    Iteration 2000 6.30sample/s Loss=1.2342  
+Epoch 2    Loss: 1.2742
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4084±0.2715, r = 0.4084±0.2715, f1 = 0.4084±0.2715, cvg = 0.1084
+bicycle: p = 0.5237±0.2556, r = 0.5237±0.2556, f1 = 0.5237±0.2556, cvg = 0.7257
+bird: p = 0.6382±0.3102, r = 0.6382±0.3102, f1 = 0.6382±0.3102, cvg = 0.1418
+boat: p = 0.4815±0.3731, r = 0.4815±0.3731, f1 = 0.4815±0.3731, cvg = 0.2505
+bottle: p = 0.7250±0.3275, r = 0.7250±0.3275, f1 = 0.7250±0.3275, cvg = 0.1396
+bus: p = 0.6624±0.3953, r = 0.6624±0.3953, f1 = 0.6624±0.3953, cvg = 0.7142
+car: p = 0.6141±0.3205, r = 0.6141±0.3205, f1 = 0.6141±0.3205, cvg = 0.0761
+cat: p = 0.6317±0.2855, r = 0.6317±0.2855, f1 = 0.6317±0.2855, cvg = 0.1974
+chair: p = 0.4147±0.3377, r = 0.4147±0.3377, f1 = 0.4147±0.3377, cvg = 0.4895
+cow: p = 0.6090±0.2656, r = 0.6090±0.2656, f1 = 0.6090±0.2656, cvg = 0.6519
+diningtable: p = 0.6100±0.3727, r = 0.6100±0.3727, f1 = 0.6100±0.3727, cvg = 1.0000
+dog: p = 0.6333±0.2795, r = 0.6333±0.2795, f1 = 0.6333±0.2795, cvg = 0.0929
+horse: p = 0.6464±0.2490, r = 0.6464±0.2490, f1 = 0.6464±0.2490, cvg = 0.9495
+motorbike: p = 0.5822±0.2786, r = 0.5822±0.2786, f1 = 0.5822±0.2786, cvg = 0.5627
+person: p = 0.4082±0.2310, r = 0.4082±0.2310, f1 = 0.4082±0.2310, cvg = 0.0827
+pottedplant: p = 0.8099±0.2709, r = 0.8099±0.2709, f1 = 0.8099±0.2709, cvg = 0.2057
+sheep: p = 0.6426±0.2874, r = 0.6426±0.2874, f1 = 0.6426±0.2874, cvg = 0.2944
+sofa: p = 0.5552±0.3742, r = 0.5552±0.3742, f1 = 0.5552±0.3742, cvg = 0.9643
+train: p = 0.7739±0.3175, r = 0.7739±0.3175, f1 = 0.7739±0.3175, cvg = 0.6768
+tvmonitor: p = 0.8912±0.2663, r = 0.8912±0.2663, f1 = 0.8912±0.2663, cvg = 0.2442
+average accuracy: p = 0.6131±0.3035, r = 0.6131±0.3035, f1 = 0.6131±0.3035
+Evaluation complete in 27m 7s
+Predict time
+aeroplane = 0.0945±0.0049
+bicycle = 0.0984±0.0034
+bird = 0.0818±0.0038
+boat = 0.0768±0.0033
+bottle = 0.0889±0.0029
+bus = 0.0757±0.0024
+car = 0.0782±0.0032
+cat = 0.0900±0.0047
+chair = 0.0857±0.0042
+cow = 0.0952±0.0048
+diningtable = 0.0742±0.0005
+dog = 0.0896±0.0042
+horse = 0.0946±0.0053
+motorbike = 0.0863±0.0040
+person = 0.1055±0.0059
+pottedplant = 0.0770±0.0023
+sheep = 0.0856±0.0048
+sofa = 0.0829±0.0046
+train = 0.0696±0.0017
+tvmonitor = 0.0717±0.0021
+average time = 0.0858±0.0103
+gt perm mat cache deleted
+Epoch 3/29
+----------
+lr = 1.00e-04
+Epoch 3    Iteration 100  6.37sample/s Loss=1.2100  
+Epoch 3    Iteration 200  6.35sample/s Loss=1.2196  
+Epoch 3    Iteration 300  6.31sample/s Loss=1.1730  
+Epoch 3    Iteration 400  6.30sample/s Loss=1.1777  
+Epoch 3    Iteration 500  6.27sample/s Loss=1.1967  
+Epoch 3    Iteration 600  6.31sample/s Loss=1.2340  
+Epoch 3    Iteration 700  6.30sample/s Loss=1.1493  
+Epoch 3    Iteration 800  6.33sample/s Loss=1.1722  
+Epoch 3    Iteration 900  6.23sample/s Loss=1.1602  
+Epoch 3    Iteration 1000 6.31sample/s Loss=1.1258  
+Epoch 3    Iteration 1100 6.22sample/s Loss=1.1391  
+Epoch 3    Iteration 1200 6.29sample/s Loss=1.1047  
+Epoch 3    Iteration 1300 6.30sample/s Loss=1.1751  
+Epoch 3    Iteration 1400 6.29sample/s Loss=1.1387  
+Epoch 3    Iteration 1500 6.33sample/s Loss=1.1362  
+Epoch 3    Iteration 1600 6.23sample/s Loss=1.1646  
+Epoch 3    Iteration 1700 6.27sample/s Loss=1.0961  
+Epoch 3    Iteration 1800 6.26sample/s Loss=1.1245  
+Epoch 3    Iteration 1900 6.32sample/s Loss=1.1149  
+Epoch 3    Iteration 2000 6.22sample/s Loss=1.1196  
+Epoch 3    Loss: 1.1566
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4368±0.2693, r = 0.4368±0.2693, f1 = 0.4368±0.2693, cvg = 0.1084
+bicycle: p = 0.5450±0.2550, r = 0.5450±0.2550, f1 = 0.5450±0.2550, cvg = 0.7257
+bird: p = 0.6543±0.3096, r = 0.6543±0.3096, f1 = 0.6543±0.3096, cvg = 0.1418
+boat: p = 0.4969±0.3776, r = 0.4969±0.3776, f1 = 0.4969±0.3776, cvg = 0.2505
+bottle: p = 0.7604±0.3280, r = 0.7604±0.3280, f1 = 0.7604±0.3280, cvg = 0.1396
+bus: p = 0.6817±0.3873, r = 0.6817±0.3873, f1 = 0.6817±0.3873, cvg = 0.7142
+car: p = 0.6311±0.3218, r = 0.6311±0.3218, f1 = 0.6311±0.3218, cvg = 0.0761
+cat: p = 0.6635±0.2855, r = 0.6635±0.2855, f1 = 0.6635±0.2855, cvg = 0.1974
+chair: p = 0.4143±0.3373, r = 0.4143±0.3373, f1 = 0.4143±0.3373, cvg = 0.4895
+cow: p = 0.6261±0.2658, r = 0.6261±0.2658, f1 = 0.6261±0.2658, cvg = 0.6519
+diningtable: p = 0.6267±0.3711, r = 0.6267±0.3711, f1 = 0.6267±0.3711, cvg = 1.0000
+dog: p = 0.6513±0.2807, r = 0.6513±0.2807, f1 = 0.6513±0.2807, cvg = 0.0929
+horse: p = 0.6650±0.2422, r = 0.6650±0.2422, f1 = 0.6650±0.2422, cvg = 0.9495
+motorbike: p = 0.5939±0.2760, r = 0.5939±0.2760, f1 = 0.5939±0.2760, cvg = 0.5627
+person: p = 0.4070±0.2359, r = 0.4070±0.2359, f1 = 0.4070±0.2359, cvg = 0.0827
+pottedplant: p = 0.8264±0.2616, r = 0.8264±0.2616, f1 = 0.8264±0.2616, cvg = 0.2057
+sheep: p = 0.6566±0.2824, r = 0.6566±0.2824, f1 = 0.6566±0.2824, cvg = 0.2944
+sofa: p = 0.5658±0.3664, r = 0.5658±0.3664, f1 = 0.5658±0.3664, cvg = 0.9643
+train: p = 0.7885±0.3111, r = 0.7885±0.3111, f1 = 0.7885±0.3111, cvg = 0.6768
+tvmonitor: p = 0.8963±0.2609, r = 0.8963±0.2609, f1 = 0.8963±0.2609, cvg = 0.2442
+average accuracy: p = 0.6294±0.3013, r = 0.6294±0.3013, f1 = 0.6294±0.3013
+Evaluation complete in 27m 27s
+Predict time
+aeroplane = 0.0955±0.0051
+bicycle = 0.1001±0.0044
+bird = 0.0820±0.0030
+boat = 0.0772±0.0028
+bottle = 0.0898±0.0029
+bus = 0.0763±0.0022
+car = 0.0791±0.0036
+cat = 0.0916±0.0053
+chair = 0.0864±0.0033
+cow = 0.0963±0.0077
+diningtable = 0.0765±0.0007
+dog = 0.0913±0.0050
+horse = 0.0961±0.0058
+motorbike = 0.0868±0.0043
+person = 0.1078±0.0071
+pottedplant = 0.0777±0.0025
+sheep = 0.0864±0.0112
+sofa = 0.0843±0.0027
+train = 0.0700±0.0019
+tvmonitor = 0.0723±0.0013
+average time = 0.0868±0.0111
+gt perm mat cache deleted
+Epoch 4/29
+----------
+lr = 1.00e-04
+Epoch 4    Iteration 100  6.33sample/s Loss=1.0974  
+Epoch 4    Iteration 200  6.31sample/s Loss=1.1082  
+Epoch 4    Iteration 300  6.31sample/s Loss=1.0689  
+Epoch 4    Iteration 400  6.28sample/s Loss=1.0677  
+Epoch 4    Iteration 500  6.29sample/s Loss=1.0832  
+Epoch 4    Iteration 600  6.33sample/s Loss=1.1277  
+Epoch 4    Iteration 700  6.33sample/s Loss=1.0376  
+Epoch 4    Iteration 800  6.35sample/s Loss=1.0710  
+Epoch 4    Iteration 900  6.27sample/s Loss=1.0462  
+Epoch 4    Iteration 1000 6.38sample/s Loss=1.0165  
+Epoch 4    Iteration 1100 6.27sample/s Loss=1.0324  
+Epoch 4    Iteration 1200 6.34sample/s Loss=1.0026  
+Epoch 4    Iteration 1300 6.32sample/s Loss=1.0724  
+Epoch 4    Iteration 1400 6.29sample/s Loss=1.0292  
+Epoch 4    Iteration 1500 6.35sample/s Loss=1.0312  
+Epoch 4    Iteration 1600 6.25sample/s Loss=1.0640  
+Epoch 4    Iteration 1700 6.26sample/s Loss=0.9910  
+Epoch 4    Iteration 1800 6.27sample/s Loss=1.0175  
+Epoch 4    Iteration 1900 6.35sample/s Loss=1.0198  
+Epoch 4    Iteration 2000 6.23sample/s Loss=1.0151  
+Epoch 4    Loss: 1.0500
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4494±0.2662, r = 0.4494±0.2662, f1 = 0.4494±0.2662, cvg = 0.1084
+bicycle: p = 0.5684±0.2544, r = 0.5684±0.2544, f1 = 0.5684±0.2544, cvg = 0.7257
+bird: p = 0.6646±0.3105, r = 0.6646±0.3105, f1 = 0.6646±0.3105, cvg = 0.1418
+boat: p = 0.5045±0.3799, r = 0.5045±0.3799, f1 = 0.5045±0.3799, cvg = 0.2505
+bottle: p = 0.7751±0.3284, r = 0.7751±0.3284, f1 = 0.7751±0.3284, cvg = 0.1396
+bus: p = 0.6932±0.3829, r = 0.6932±0.3829, f1 = 0.6932±0.3829, cvg = 0.7142
+car: p = 0.6368±0.3219, r = 0.6368±0.3219, f1 = 0.6368±0.3219, cvg = 0.0761
+cat: p = 0.6876±0.2893, r = 0.6876±0.2893, f1 = 0.6876±0.2893, cvg = 0.1974
+chair: p = 0.4145±0.3295, r = 0.4145±0.3295, f1 = 0.4145±0.3295, cvg = 0.4895
+cow: p = 0.6374±0.2624, r = 0.6374±0.2624, f1 = 0.6374±0.2624, cvg = 0.6519
+diningtable: p = 0.5883±0.3376, r = 0.5883±0.3376, f1 = 0.5883±0.3376, cvg = 1.0000
+dog: p = 0.6589±0.2771, r = 0.6589±0.2771, f1 = 0.6589±0.2771, cvg = 0.0929
+horse: p = 0.6698±0.2432, r = 0.6698±0.2432, f1 = 0.6698±0.2432, cvg = 0.9495
+motorbike: p = 0.6068±0.2764, r = 0.6068±0.2764, f1 = 0.6068±0.2764, cvg = 0.5627
+person: p = 0.4151±0.2387, r = 0.4151±0.2387, f1 = 0.4151±0.2387, cvg = 0.0827
+pottedplant: p = 0.8283±0.2644, r = 0.8283±0.2644, f1 = 0.8283±0.2644, cvg = 0.2057
+sheep: p = 0.6661±0.2821, r = 0.6661±0.2821, f1 = 0.6661±0.2821, cvg = 0.2944
+sofa: p = 0.5612±0.3757, r = 0.5612±0.3757, f1 = 0.5612±0.3757, cvg = 0.9643
+train: p = 0.8036±0.3051, r = 0.8036±0.3051, f1 = 0.8036±0.3051, cvg = 0.6768
+tvmonitor: p = 0.8998±0.2603, r = 0.8998±0.2603, f1 = 0.8998±0.2603, cvg = 0.2442
+average accuracy: p = 0.6365±0.2993, r = 0.6365±0.2993, f1 = 0.6365±0.2993
+Evaluation complete in 27m 23s
+Predict time
+aeroplane = 0.0954±0.0043
+bicycle = 0.0997±0.0043
+bird = 0.0821±0.0032
+boat = 0.0771±0.0096
+bottle = 0.0896±0.0025
+bus = 0.0765±0.0024
+car = 0.0784±0.0032
+cat = 0.0909±0.0040
+chair = 0.0867±0.0037
+cow = 0.0963±0.0053
+diningtable = 0.0756±0.0015
+dog = 0.0903±0.0040
+horse = 0.0953±0.0051
+motorbike = 0.0869±0.0039
+person = 0.1067±0.0063
+pottedplant = 0.0774±0.0021
+sheep = 0.0867±0.0051
+sofa = 0.0824±0.0024
+train = 0.0701±0.0019
+tvmonitor = 0.0724±0.0016
+average time = 0.0866±0.0107
+gt perm mat cache deleted
+Epoch 5/29
+----------
+lr = 1.00e-04
+Epoch 5    Iteration 100  6.27sample/s Loss=0.9919  
+Epoch 5    Iteration 200  6.28sample/s Loss=1.0009  
+Epoch 5    Iteration 300  6.30sample/s Loss=0.9703  
+Epoch 5    Iteration 400  6.25sample/s Loss=0.9666  
+Epoch 5    Iteration 500  6.24sample/s Loss=0.9822  
+Epoch 5    Iteration 600  6.24sample/s Loss=1.0332  
+Epoch 5    Iteration 700  6.27sample/s Loss=0.9336  
+Epoch 5    Iteration 800  6.33sample/s Loss=0.9758  
+Epoch 5    Iteration 900  6.25sample/s Loss=0.9445  
+Epoch 5    Iteration 1000 6.30sample/s Loss=0.9210  
+Epoch 5    Iteration 1100 6.22sample/s Loss=0.9416  
+Epoch 5    Iteration 1200 6.31sample/s Loss=0.9063  
+Epoch 5    Iteration 1300 6.25sample/s Loss=0.9686  
+Epoch 5    Iteration 1400 6.24sample/s Loss=0.9360  
+Epoch 5    Iteration 1500 6.29sample/s Loss=0.9296  
+Epoch 5    Iteration 1600 6.22sample/s Loss=0.9683  
+Epoch 5    Iteration 1700 6.24sample/s Loss=0.9018  
+Epoch 5    Iteration 1800 6.27sample/s Loss=0.9108  
+Epoch 5    Iteration 1900 6.32sample/s Loss=0.9179  
+Epoch 5    Iteration 2000 6.22sample/s Loss=0.9274  
+Epoch 5    Loss: 0.9514
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4550±0.2641, r = 0.4550±0.2641, f1 = 0.4550±0.2641, cvg = 0.1084
+bicycle: p = 0.5869±0.2549, r = 0.5869±0.2549, f1 = 0.5869±0.2549, cvg = 0.7257
+bird: p = 0.6751±0.3115, r = 0.6751±0.3115, f1 = 0.6751±0.3115, cvg = 0.1418
+boat: p = 0.5176±0.3772, r = 0.5176±0.3772, f1 = 0.5176±0.3772, cvg = 0.2505
+bottle: p = 0.7826±0.3258, r = 0.7826±0.3258, f1 = 0.7826±0.3258, cvg = 0.1396
+bus: p = 0.7006±0.3769, r = 0.7006±0.3769, f1 = 0.7006±0.3769, cvg = 0.7142
+car: p = 0.6463±0.3191, r = 0.6463±0.3191, f1 = 0.6463±0.3191, cvg = 0.0761
+cat: p = 0.6896±0.2880, r = 0.6896±0.2880, f1 = 0.6896±0.2880, cvg = 0.1974
+chair: p = 0.4086±0.3306, r = 0.4086±0.3306, f1 = 0.4086±0.3306, cvg = 0.4895
+cow: p = 0.6456±0.2619, r = 0.6456±0.2619, f1 = 0.6456±0.2619, cvg = 0.6519
+diningtable: p = 0.6117±0.3139, r = 0.6117±0.3139, f1 = 0.6117±0.3139, cvg = 1.0000
+dog: p = 0.6625±0.2816, r = 0.6625±0.2816, f1 = 0.6625±0.2816, cvg = 0.0929
+horse: p = 0.6677±0.2437, r = 0.6677±0.2437, f1 = 0.6677±0.2437, cvg = 0.9495
+motorbike: p = 0.6171±0.2754, r = 0.6171±0.2754, f1 = 0.6171±0.2754, cvg = 0.5627
+person: p = 0.4166±0.2362, r = 0.4166±0.2362, f1 = 0.4166±0.2362, cvg = 0.0827
+pottedplant: p = 0.8297±0.2602, r = 0.8297±0.2602, f1 = 0.8297±0.2602, cvg = 0.2057
+sheep: p = 0.6729±0.2804, r = 0.6729±0.2804, f1 = 0.6729±0.2804, cvg = 0.2944
+sofa: p = 0.5361±0.3760, r = 0.5361±0.3760, f1 = 0.5361±0.3760, cvg = 0.9643
+train: p = 0.8089±0.3036, r = 0.8089±0.3036, f1 = 0.8089±0.3036, cvg = 0.6768
+tvmonitor: p = 0.9028±0.2576, r = 0.9028±0.2576, f1 = 0.9028±0.2576, cvg = 0.2442
+average accuracy: p = 0.6417±0.2969, r = 0.6417±0.2969, f1 = 0.6417±0.2969
+Evaluation complete in 27m 22s
+Predict time
+aeroplane = 0.0956±0.0054
+bicycle = 0.0992±0.0036
+bird = 0.0824±0.0035
+boat = 0.0770±0.0028
+bottle = 0.0893±0.0025
+bus = 0.0760±0.0021
+car = 0.0784±0.0031
+cat = 0.0908±0.0128
+chair = 0.0860±0.0037
+cow = 0.0963±0.0055
+diningtable = 0.0759±0.0004
+dog = 0.0904±0.0040
+horse = 0.0960±0.0154
+motorbike = 0.0871±0.0040
+person = 0.1064±0.0093
+pottedplant = 0.0777±0.0023
+sheep = 0.0865±0.0048
+sofa = 0.0818±0.0031
+train = 0.0702±0.0018
+tvmonitor = 0.0726±0.0016
+average time = 0.0865±0.0115
+gt perm mat cache deleted
+Epoch 6/29
+----------
+lr = 1.00e-04
+Epoch 6    Iteration 100  6.27sample/s Loss=0.8996  
+Epoch 6    Iteration 200  6.33sample/s Loss=0.9047  
+Epoch 6    Iteration 300  6.31sample/s Loss=0.8751  
+Epoch 6    Iteration 400  6.25sample/s Loss=0.8640  
+Epoch 6    Iteration 500  6.24sample/s Loss=0.8919  
+Epoch 6    Iteration 600  6.27sample/s Loss=0.9337  
+Epoch 6    Iteration 700  6.26sample/s Loss=0.8402  
+Epoch 6    Iteration 800  6.32sample/s Loss=0.8800  
+Epoch 6    Iteration 900  6.28sample/s Loss=0.8475  
+Epoch 6    Iteration 1000 6.33sample/s Loss=0.8281  
+Epoch 6    Iteration 1100 6.29sample/s Loss=0.8451  
+Epoch 6    Iteration 1200 6.36sample/s Loss=0.8083  
+Epoch 6    Iteration 1300 6.38sample/s Loss=0.8767  
+Epoch 6    Iteration 1400 6.32sample/s Loss=0.8300  
+Epoch 6    Iteration 1500 6.40sample/s Loss=0.8277  
+Epoch 6    Iteration 1600 6.28sample/s Loss=0.8655  
+Epoch 6    Iteration 1700 6.26sample/s Loss=0.8126  
+Epoch 6    Iteration 1800 6.31sample/s Loss=0.8174  
+Epoch 6    Iteration 1900 6.36sample/s Loss=0.8216  
+Epoch 6    Iteration 2000 6.25sample/s Loss=0.8335  
+Epoch 6    Loss: 0.8552
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4644±0.2665, r = 0.4644±0.2665, f1 = 0.4644±0.2665, cvg = 0.1084
+bicycle: p = 0.5967±0.2564, r = 0.5967±0.2564, f1 = 0.5967±0.2564, cvg = 0.7257
+bird: p = 0.6777±0.3093, r = 0.6777±0.3093, f1 = 0.6777±0.3093, cvg = 0.1418
+boat: p = 0.5163±0.3700, r = 0.5163±0.3700, f1 = 0.5163±0.3700, cvg = 0.2505
+bottle: p = 0.7874±0.3264, r = 0.7874±0.3264, f1 = 0.7874±0.3264, cvg = 0.1396
+bus: p = 0.7101±0.3692, r = 0.7101±0.3692, f1 = 0.7101±0.3692, cvg = 0.7142
+car: p = 0.6450±0.3206, r = 0.6450±0.3206, f1 = 0.6450±0.3206, cvg = 0.0761
+cat: p = 0.6940±0.2855, r = 0.6940±0.2855, f1 = 0.6940±0.2855, cvg = 0.1974
+chair: p = 0.4072±0.3183, r = 0.4072±0.3183, f1 = 0.4072±0.3183, cvg = 0.4895
+cow: p = 0.6512±0.2652, r = 0.6512±0.2652, f1 = 0.6512±0.2652, cvg = 0.6519
+diningtable: p = 0.5717±0.3375, r = 0.5717±0.3375, f1 = 0.5717±0.3375, cvg = 1.0000
+dog: p = 0.6626±0.2803, r = 0.6626±0.2803, f1 = 0.6626±0.2803, cvg = 0.0929
+horse: p = 0.6705±0.2429, r = 0.6705±0.2429, f1 = 0.6705±0.2429, cvg = 0.9495
+motorbike: p = 0.6230±0.2709, r = 0.6230±0.2709, f1 = 0.6230±0.2709, cvg = 0.5627
+person: p = 0.4209±0.2344, r = 0.4209±0.2344, f1 = 0.4209±0.2344, cvg = 0.0827
+pottedplant: p = 0.8253±0.2637, r = 0.8253±0.2637, f1 = 0.8253±0.2637, cvg = 0.2057
+sheep: p = 0.6777±0.2804, r = 0.6777±0.2804, f1 = 0.6777±0.2804, cvg = 0.2944
+sofa: p = 0.5176±0.3654, r = 0.5176±0.3654, f1 = 0.5176±0.3654, cvg = 0.9643
+train: p = 0.8175±0.2997, r = 0.8175±0.2997, f1 = 0.8175±0.2997, cvg = 0.6768
+tvmonitor: p = 0.9009±0.2597, r = 0.9009±0.2597, f1 = 0.9009±0.2597, cvg = 0.2442
+average accuracy: p = 0.6419±0.2961, r = 0.6419±0.2961, f1 = 0.6419±0.2961
+Evaluation complete in 27m 20s
+Predict time
+aeroplane = 0.0939±0.0041
+bicycle = 0.0989±0.0039
+bird = 0.0825±0.0040
+boat = 0.0764±0.0025
+bottle = 0.0889±0.0027
+bus = 0.0760±0.0021
+car = 0.0789±0.0037
+cat = 0.0913±0.0046
+chair = 0.0861±0.0039
+cow = 0.0963±0.0053
+diningtable = 0.0766±0.0001
+dog = 0.0908±0.0046
+horse = 0.0958±0.0061
+motorbike = 0.0871±0.0036
+person = 0.1063±0.0060
+pottedplant = 0.0778±0.0022
+sheep = 0.0862±0.0049
+sofa = 0.0812±0.0021
+train = 0.0701±0.0020
+tvmonitor = 0.0724±0.0064
+average time = 0.0864±0.0105
+gt perm mat cache deleted
+Epoch 7/29
+----------
+lr = 1.00e-04
+Epoch 7    Iteration 100  6.36sample/s Loss=0.7971  
+Epoch 7    Iteration 200  6.33sample/s Loss=0.8064  
+Epoch 7    Iteration 300  6.39sample/s Loss=0.7890  
+Epoch 7    Iteration 400  6.29sample/s Loss=0.7664  
+Epoch 7    Iteration 500  6.30sample/s Loss=0.7974  
+Epoch 7    Iteration 600  6.32sample/s Loss=0.8340  
+Epoch 7    Iteration 700  6.32sample/s Loss=0.7439  
+Epoch 7    Iteration 800  6.40sample/s Loss=0.7800  
+Epoch 7    Iteration 900  6.32sample/s Loss=0.7536  
+Epoch 7    Iteration 1000 6.39sample/s Loss=0.7303  
+Epoch 7    Iteration 1100 6.34sample/s Loss=0.7532  
+Epoch 7    Iteration 1200 6.36sample/s Loss=0.7185  
+Epoch 7    Iteration 1300 6.39sample/s Loss=0.7731  
+Epoch 7    Iteration 1400 6.33sample/s Loss=0.7356  
+Epoch 7    Iteration 1500 6.41sample/s Loss=0.7255  
+Epoch 7    Iteration 1600 6.27sample/s Loss=0.7607  
+Epoch 7    Iteration 1700 6.30sample/s Loss=0.7204  
+Epoch 7    Iteration 1800 6.34sample/s Loss=0.7245  
+Epoch 7    Iteration 1900 6.38sample/s Loss=0.7274  
+Epoch 7    Iteration 2000 6.26sample/s Loss=0.7388  
+Epoch 7    Loss: 0.7588
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4635±0.2688, r = 0.4635±0.2688, f1 = 0.4635±0.2688, cvg = 0.1084
+bicycle: p = 0.6078±0.2578, r = 0.6078±0.2578, f1 = 0.6078±0.2578, cvg = 0.7257
+bird: p = 0.6778±0.3128, r = 0.6778±0.3128, f1 = 0.6778±0.3128, cvg = 0.1418
+boat: p = 0.5206±0.3680, r = 0.5206±0.3680, f1 = 0.5206±0.3680, cvg = 0.2505
+bottle: p = 0.7965±0.3222, r = 0.7965±0.3222, f1 = 0.7965±0.3222, cvg = 0.1396
+bus: p = 0.7109±0.3683, r = 0.7109±0.3683, f1 = 0.7109±0.3683, cvg = 0.7142
+car: p = 0.6469±0.3137, r = 0.6469±0.3137, f1 = 0.6469±0.3137, cvg = 0.0761
+cat: p = 0.6955±0.2871, r = 0.6955±0.2871, f1 = 0.6955±0.2871, cvg = 0.1974
+chair: p = 0.4114±0.3172, r = 0.4114±0.3172, f1 = 0.4114±0.3172, cvg = 0.4895
+cow: p = 0.6479±0.2629, r = 0.6479±0.2629, f1 = 0.6479±0.2629, cvg = 0.6519
+diningtable: p = 0.6050±0.3609, r = 0.6050±0.3609, f1 = 0.6050±0.3609, cvg = 1.0000
+dog: p = 0.6652±0.2859, r = 0.6652±0.2859, f1 = 0.6652±0.2859, cvg = 0.0929
+horse: p = 0.6638±0.2442, r = 0.6638±0.2442, f1 = 0.6638±0.2442, cvg = 0.9495
+motorbike: p = 0.6257±0.2745, r = 0.6257±0.2745, f1 = 0.6257±0.2745, cvg = 0.5627
+person: p = 0.4194±0.2316, r = 0.4194±0.2316, f1 = 0.4194±0.2316, cvg = 0.0827
+pottedplant: p = 0.8243±0.2647, r = 0.8243±0.2647, f1 = 0.8243±0.2647, cvg = 0.2057
+sheep: p = 0.6818±0.2832, r = 0.6818±0.2832, f1 = 0.6818±0.2832, cvg = 0.2944
+sofa: p = 0.5123±0.3615, r = 0.5123±0.3615, f1 = 0.5123±0.3615, cvg = 0.9643
+train: p = 0.8222±0.2966, r = 0.8222±0.2966, f1 = 0.8222±0.2966, cvg = 0.6768
+tvmonitor: p = 0.9022±0.2594, r = 0.9022±0.2594, f1 = 0.9022±0.2594, cvg = 0.2442
+average accuracy: p = 0.6450±0.2971, r = 0.6450±0.2971, f1 = 0.6450±0.2971
+Evaluation complete in 27m 17s
+Predict time
+aeroplane = 0.0951±0.0050
+bicycle = 0.0991±0.0094
+bird = 0.0817±0.0033
+boat = 0.0764±0.0030
+bottle = 0.0888±0.0025
+bus = 0.0758±0.0020
+car = 0.0789±0.0036
+cat = 0.0907±0.0046
+chair = 0.0856±0.0038
+cow = 0.0958±0.0050
+diningtable = 0.0756±0.0010
+dog = 0.0904±0.0045
+horse = 0.0952±0.0052
+motorbike = 0.0864±0.0043
+person = 0.1068±0.0063
+pottedplant = 0.0776±0.0020
+sheep = 0.0860±0.0049
+sofa = 0.0836±0.0025
+train = 0.0701±0.0017
+tvmonitor = 0.0726±0.0020
+average time = 0.0863±0.0106
+gt perm mat cache deleted
+Epoch 8/29
+----------
+lr = 1.00e-04
+Epoch 8    Iteration 100  6.27sample/s Loss=0.7034  
+Epoch 8    Iteration 200  6.30sample/s Loss=0.7080  
+Epoch 8    Iteration 300  6.35sample/s Loss=0.6957  
+Epoch 8    Iteration 400  6.28sample/s Loss=0.6772  
+Epoch 8    Iteration 500  6.24sample/s Loss=0.7138  
+Epoch 8    Iteration 600  6.27sample/s Loss=0.7370  
+Epoch 8    Iteration 700  6.29sample/s Loss=0.6487  
+Epoch 8    Iteration 800  6.33sample/s Loss=0.6793  
+Epoch 8    Iteration 900  6.24sample/s Loss=0.6591  
+Epoch 8    Iteration 1000 6.35sample/s Loss=0.6423  
+Epoch 8    Iteration 1100 6.28sample/s Loss=0.6678  
+Epoch 8    Iteration 1200 6.33sample/s Loss=0.6278  
+Epoch 8    Iteration 1300 6.36sample/s Loss=0.6776  
+Epoch 8    Iteration 1400 6.34sample/s Loss=0.6547  
+Epoch 8    Iteration 1500 6.39sample/s Loss=0.6329  
+Epoch 8    Iteration 1600 6.28sample/s Loss=0.6739  
+Epoch 8    Iteration 1700 6.28sample/s Loss=0.6388  
+Epoch 8    Iteration 1800 6.32sample/s Loss=0.6340  
+Epoch 8    Iteration 1900 6.39sample/s Loss=0.6397  
+Epoch 8    Iteration 2000 6.30sample/s Loss=0.6456  
+Epoch 8    Loss: 0.6679
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4611±0.2652, r = 0.4611±0.2652, f1 = 0.4611±0.2652, cvg = 0.1084
+bicycle: p = 0.6201±0.2587, r = 0.6201±0.2587, f1 = 0.6201±0.2587, cvg = 0.7257
+bird: p = 0.6733±0.3131, r = 0.6733±0.3131, f1 = 0.6733±0.3131, cvg = 0.1418
+boat: p = 0.5214±0.3635, r = 0.5214±0.3635, f1 = 0.5214±0.3635, cvg = 0.2505
+bottle: p = 0.7944±0.3253, r = 0.7944±0.3253, f1 = 0.7944±0.3253, cvg = 0.1396
+bus: p = 0.7123±0.3639, r = 0.7123±0.3639, f1 = 0.7123±0.3639, cvg = 0.7142
+car: p = 0.6476±0.3183, r = 0.6476±0.3183, f1 = 0.6476±0.3183, cvg = 0.0761
+cat: p = 0.6936±0.2865, r = 0.6936±0.2865, f1 = 0.6936±0.2865, cvg = 0.1974
+chair: p = 0.4092±0.3126, r = 0.4092±0.3126, f1 = 0.4092±0.3126, cvg = 0.4895
+cow: p = 0.6434±0.2633, r = 0.6434±0.2633, f1 = 0.6434±0.2633, cvg = 0.6519
+diningtable: p = 0.5717±0.3375, r = 0.5717±0.3375, f1 = 0.5717±0.3375, cvg = 1.0000
+dog: p = 0.6620±0.2808, r = 0.6620±0.2808, f1 = 0.6620±0.2808, cvg = 0.0929
+horse: p = 0.6620±0.2369, r = 0.6620±0.2369, f1 = 0.6620±0.2369, cvg = 0.9495
+motorbike: p = 0.6211±0.2768, r = 0.6211±0.2768, f1 = 0.6211±0.2768, cvg = 0.5627
+person: p = 0.4157±0.2326, r = 0.4157±0.2326, f1 = 0.4157±0.2326, cvg = 0.0827
+pottedplant: p = 0.8198±0.2702, r = 0.8198±0.2702, f1 = 0.8198±0.2702, cvg = 0.2057
+sheep: p = 0.6799±0.2802, r = 0.6799±0.2802, f1 = 0.6799±0.2802, cvg = 0.2944
+sofa: p = 0.5137±0.3685, r = 0.5137±0.3685, f1 = 0.5137±0.3685, cvg = 0.9643
+train: p = 0.8200±0.2980, r = 0.8200±0.2980, f1 = 0.8200±0.2980, cvg = 0.6768
+tvmonitor: p = 0.9011±0.2564, r = 0.9011±0.2564, f1 = 0.9011±0.2564, cvg = 0.2442
+average accuracy: p = 0.6422±0.2954, r = 0.6422±0.2954, f1 = 0.6422±0.2954
+Evaluation complete in 27m 20s
+Predict time
+aeroplane = 0.0953±0.0050
+bicycle = 0.1001±0.0035
+bird = 0.0818±0.0031
+boat = 0.0769±0.0027
+bottle = 0.0896±0.0032
+bus = 0.0761±0.0019
+car = 0.0788±0.0034
+cat = 0.0916±0.0049
+chair = 0.0858±0.0033
+cow = 0.0958±0.0047
+diningtable = 0.0757±0.0006
+dog = 0.0903±0.0046
+horse = 0.0955±0.0052
+motorbike = 0.0863±0.0035
+person = 0.1062±0.0063
+pottedplant = 0.0771±0.0021
+sheep = 0.0862±0.0051
+sofa = 0.0837±0.0052
+train = 0.0701±0.0017
+tvmonitor = 0.0721±0.0017
+average time = 0.0864±0.0105
+gt perm mat cache deleted
+Epoch 9/29
+----------
+lr = 1.00e-04
+Epoch 9    Iteration 100  6.29sample/s Loss=0.6162  
+Epoch 9    Iteration 200  6.31sample/s Loss=0.6137  
+Epoch 9    Iteration 300  6.32sample/s Loss=0.6083  
+Epoch 9    Iteration 400  6.27sample/s Loss=0.5830  
+Epoch 9    Iteration 500  6.25sample/s Loss=0.6215  
+Epoch 9    Iteration 600  6.29sample/s Loss=0.6485  
+Epoch 9    Iteration 700  6.28sample/s Loss=0.5625  
+Epoch 9    Iteration 800  6.37sample/s Loss=0.5877  
+Epoch 9    Iteration 900  6.26sample/s Loss=0.5743  
+Epoch 9    Iteration 1000 6.31sample/s Loss=0.5537  
+Epoch 9    Iteration 1100 6.25sample/s Loss=0.5802  
+Epoch 9    Iteration 1200 6.28sample/s Loss=0.5354  
+Epoch 9    Iteration 1300 6.30sample/s Loss=0.5704  
+Epoch 9    Iteration 1400 6.26sample/s Loss=0.5548  
+Epoch 9    Iteration 1500 6.34sample/s Loss=0.5444  
+Epoch 9    Iteration 1600 6.24sample/s Loss=0.5743  
+Epoch 9    Iteration 1700 6.25sample/s Loss=0.5486  
+Epoch 9    Iteration 1800 6.29sample/s Loss=0.5401  
+Epoch 9    Iteration 1900 6.34sample/s Loss=0.5468  
+Epoch 9    Iteration 2000 6.25sample/s Loss=0.5509  
+Epoch 9    Loss: 0.5758
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4647±0.2713, r = 0.4647±0.2713, f1 = 0.4647±0.2713, cvg = 0.1084
+bicycle: p = 0.6143±0.2577, r = 0.6143±0.2577, f1 = 0.6143±0.2577, cvg = 0.7257
+bird: p = 0.6715±0.3141, r = 0.6715±0.3141, f1 = 0.6715±0.3141, cvg = 0.1418
+boat: p = 0.5296±0.3617, r = 0.5296±0.3617, f1 = 0.5296±0.3617, cvg = 0.2505
+bottle: p = 0.7940±0.3256, r = 0.7940±0.3256, f1 = 0.7940±0.3256, cvg = 0.1396
+bus: p = 0.7093±0.3618, r = 0.7093±0.3618, f1 = 0.7093±0.3618, cvg = 0.7142
+car: p = 0.6505±0.3150, r = 0.6505±0.3150, f1 = 0.6505±0.3150, cvg = 0.0761
+cat: p = 0.6900±0.2901, r = 0.6900±0.2901, f1 = 0.6900±0.2901, cvg = 0.1974
+chair: p = 0.4148±0.3101, r = 0.4148±0.3101, f1 = 0.4148±0.3101, cvg = 0.4895
+cow: p = 0.6442±0.2633, r = 0.6442±0.2633, f1 = 0.6442±0.2633, cvg = 0.6519
+diningtable: p = 0.5383±0.3429, r = 0.5383±0.3429, f1 = 0.5383±0.3429, cvg = 1.0000
+dog: p = 0.6631±0.2816, r = 0.6631±0.2816, f1 = 0.6631±0.2816, cvg = 0.0929
+horse: p = 0.6576±0.2384, r = 0.6576±0.2384, f1 = 0.6576±0.2384, cvg = 0.9495
+motorbike: p = 0.6195±0.2771, r = 0.6195±0.2771, f1 = 0.6195±0.2771, cvg = 0.5627
+person: p = 0.4164±0.2289, r = 0.4164±0.2289, f1 = 0.4164±0.2289, cvg = 0.0827
+pottedplant: p = 0.8216±0.2707, r = 0.8216±0.2707, f1 = 0.8216±0.2707, cvg = 0.2057
+sheep: p = 0.6735±0.2821, r = 0.6735±0.2821, f1 = 0.6735±0.2821, cvg = 0.2944
+sofa: p = 0.5123±0.3461, r = 0.5123±0.3461, f1 = 0.5123±0.3461, cvg = 0.9643
+train: p = 0.8250±0.2934, r = 0.8250±0.2934, f1 = 0.8250±0.2934, cvg = 0.6768
+tvmonitor: p = 0.8947±0.2620, r = 0.8947±0.2620, f1 = 0.8947±0.2620, cvg = 0.2442
+average accuracy: p = 0.6403±0.2947, r = 0.6403±0.2947, f1 = 0.6403±0.2947
+Evaluation complete in 27m 16s
+Predict time
+aeroplane = 0.0944±0.0095
+bicycle = 0.0992±0.0031
+bird = 0.0819±0.0035
+boat = 0.0769±0.0031
+bottle = 0.0891±0.0023
+bus = 0.0758±0.0022
+car = 0.0785±0.0037
+cat = 0.0912±0.0050
+chair = 0.0858±0.0033
+cow = 0.0955±0.0053
+diningtable = 0.0849±0.0029
+dog = 0.0896±0.0050
+horse = 0.0949±0.0053
+motorbike = 0.0865±0.0037
+person = 0.1065±0.0066
+pottedplant = 0.0775±0.0022
+sheep = 0.0865±0.0052
+sofa = 0.0975±0.0596
+train = 0.0701±0.0019
+tvmonitor = 0.0726±0.0016
+average time = 0.0863±0.0108
+gt perm mat cache deleted
+Epoch 10/29
+----------
+lr = 1.00e-04
+Epoch 10   Iteration 100  6.24sample/s Loss=0.5207  
+Epoch 10   Iteration 200  6.24sample/s Loss=0.5212  
+Epoch 10   Iteration 300  6.23sample/s Loss=0.5144  
+Epoch 10   Iteration 400  6.22sample/s Loss=0.4989  
+Epoch 10   Iteration 500  6.20sample/s Loss=0.5377  
+Epoch 10   Iteration 600  6.20sample/s Loss=0.5475  
+Epoch 10   Iteration 700  6.25sample/s Loss=0.4779  
+Epoch 10   Iteration 800  6.31sample/s Loss=0.4961  
+Epoch 10   Iteration 900  6.22sample/s Loss=0.5005  
+Epoch 10   Iteration 1000 6.31sample/s Loss=0.4690  
+Epoch 10   Iteration 1100 6.25sample/s Loss=0.4986  
+Epoch 10   Iteration 1200 6.29sample/s Loss=0.4545  
+Epoch 10   Iteration 1300 6.31sample/s Loss=0.4801  
+Epoch 10   Iteration 1400 6.28sample/s Loss=0.4655  
+Epoch 10   Iteration 1500 6.36sample/s Loss=0.4497  
+Epoch 10   Iteration 1600 6.24sample/s Loss=0.4968  
+Epoch 10   Iteration 1700 6.24sample/s Loss=0.4717  
+Epoch 10   Iteration 1800 6.28sample/s Loss=0.4543  
+Epoch 10   Iteration 1900 6.31sample/s Loss=0.4611  
+Epoch 10   Iteration 2000 6.21sample/s Loss=0.4713  
+Epoch 10   Loss: 0.4894
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4557±0.2667, r = 0.4557±0.2667, f1 = 0.4557±0.2667, cvg = 0.1084
+bicycle: p = 0.6141±0.2602, r = 0.6141±0.2602, f1 = 0.6141±0.2602, cvg = 0.7257
+bird: p = 0.6667±0.3129, r = 0.6667±0.3129, f1 = 0.6667±0.3129, cvg = 0.1418
+boat: p = 0.5334±0.3582, r = 0.5334±0.3582, f1 = 0.5334±0.3582, cvg = 0.2505
+bottle: p = 0.7842±0.3259, r = 0.7842±0.3259, f1 = 0.7842±0.3259, cvg = 0.1396
+bus: p = 0.7151±0.3561, r = 0.7151±0.3561, f1 = 0.7151±0.3561, cvg = 0.7142
+car: p = 0.6539±0.3135, r = 0.6539±0.3135, f1 = 0.6539±0.3135, cvg = 0.0761
+cat: p = 0.6864±0.2905, r = 0.6864±0.2905, f1 = 0.6864±0.2905, cvg = 0.1974
+chair: p = 0.4096±0.3080, r = 0.4096±0.3080, f1 = 0.4096±0.3080, cvg = 0.4895
+cow: p = 0.6430±0.2632, r = 0.6430±0.2632, f1 = 0.6430±0.2632, cvg = 0.6519
+diningtable: p = 0.6117±0.3291, r = 0.6117±0.3291, f1 = 0.6117±0.3291, cvg = 1.0000
+dog: p = 0.6588±0.2825, r = 0.6588±0.2825, f1 = 0.6588±0.2825, cvg = 0.0929
+horse: p = 0.6523±0.2452, r = 0.6523±0.2452, f1 = 0.6523±0.2452, cvg = 0.9495
+motorbike: p = 0.6131±0.2748, r = 0.6131±0.2748, f1 = 0.6131±0.2748, cvg = 0.5627
+person: p = 0.4130±0.2241, r = 0.4130±0.2241, f1 = 0.4130±0.2241, cvg = 0.0827
+pottedplant: p = 0.8179±0.2744, r = 0.8179±0.2744, f1 = 0.8179±0.2744, cvg = 0.2057
+sheep: p = 0.6711±0.2865, r = 0.6711±0.2865, f1 = 0.6711±0.2865, cvg = 0.2944
+sofa: p = 0.5132±0.3605, r = 0.5132±0.3605, f1 = 0.5132±0.3605, cvg = 0.9643
+train: p = 0.8272±0.2901, r = 0.8272±0.2901, f1 = 0.8272±0.2901, cvg = 0.6768
+tvmonitor: p = 0.8925±0.2647, r = 0.8925±0.2647, f1 = 0.8925±0.2647, cvg = 0.2442
+average accuracy: p = 0.6416±0.2944, r = 0.6416±0.2944, f1 = 0.6416±0.2944
+Evaluation complete in 27m 24s
+Predict time
+aeroplane = 0.0955±0.0046
+bicycle = 0.0998±0.0041
+bird = 0.0821±0.0033
+boat = 0.0773±0.0031
+bottle = 0.0898±0.0023
+bus = 0.0762±0.0069
+car = 0.0787±0.0029
+cat = 0.0912±0.0050
+chair = 0.0859±0.0039
+cow = 0.0961±0.0053
+diningtable = 0.0770±0.0001
+dog = 0.0909±0.0044
+horse = 0.0959±0.0052
+motorbike = 0.0870±0.0039
+person = 0.1060±0.0063
+pottedplant = 0.0779±0.0023
+sheep = 0.0866±0.0049
+sofa = 0.0830±0.0022
+train = 0.0700±0.0015
+tvmonitor = 0.0727±0.0022
+average time = 0.0866±0.0105
+gt perm mat cache deleted
+Epoch 11/29
+----------
+lr = 1.00e-04
+Epoch 11   Iteration 100  6.28sample/s Loss=0.4392  
+Epoch 11   Iteration 200  6.28sample/s Loss=0.4382  
+Epoch 11   Iteration 300  6.29sample/s Loss=0.4251  
+Epoch 11   Iteration 400  6.25sample/s Loss=0.4224  
+Epoch 11   Iteration 500  6.24sample/s Loss=0.4540  
+Epoch 11   Iteration 600  6.26sample/s Loss=0.4635  
+Epoch 11   Iteration 700  6.24sample/s Loss=0.4003  
+Epoch 11   Iteration 800  6.34sample/s Loss=0.4072  
+Epoch 11   Iteration 900  6.22sample/s Loss=0.4183  
+Epoch 11   Iteration 1000 6.33sample/s Loss=0.4001  
+Epoch 11   Iteration 1100 6.22sample/s Loss=0.4179  
+Epoch 11   Iteration 1200 6.27sample/s Loss=0.3781  
+Epoch 11   Iteration 1300 6.31sample/s Loss=0.3996  
+Epoch 11   Iteration 1400 6.27sample/s Loss=0.3834  
+Epoch 11   Iteration 1500 6.36sample/s Loss=0.3680  
+Epoch 11   Iteration 1600 6.22sample/s Loss=0.4031  
+Epoch 11   Iteration 1700 6.24sample/s Loss=0.3873  
+Epoch 11   Iteration 1800 6.26sample/s Loss=0.3729  
+Epoch 11   Iteration 1900 6.34sample/s Loss=0.3835  
+Epoch 11   Iteration 2000 6.21sample/s Loss=0.3932  
+Epoch 11   Loss: 0.4078
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4518±0.2682, r = 0.4518±0.2682, f1 = 0.4518±0.2682, cvg = 0.1084
+bicycle: p = 0.6085±0.2572, r = 0.6085±0.2572, f1 = 0.6085±0.2572, cvg = 0.7257
+bird: p = 0.6637±0.3163, r = 0.6637±0.3163, f1 = 0.6637±0.3163, cvg = 0.1418
+boat: p = 0.5358±0.3579, r = 0.5358±0.3579, f1 = 0.5358±0.3579, cvg = 0.2505
+bottle: p = 0.7858±0.3257, r = 0.7858±0.3257, f1 = 0.7858±0.3257, cvg = 0.1396
+bus: p = 0.7136±0.3577, r = 0.7136±0.3577, f1 = 0.7136±0.3577, cvg = 0.7142
+car: p = 0.6459±0.3138, r = 0.6459±0.3138, f1 = 0.6459±0.3138, cvg = 0.0761
+cat: p = 0.6796±0.2935, r = 0.6796±0.2935, f1 = 0.6796±0.2935, cvg = 0.1974
+chair: p = 0.4094±0.3085, r = 0.4094±0.3085, f1 = 0.4094±0.3085, cvg = 0.4895
+cow: p = 0.6338±0.2650, r = 0.6338±0.2650, f1 = 0.6338±0.2650, cvg = 0.6519
+diningtable: p = 0.6117±0.3291, r = 0.6117±0.3291, f1 = 0.6117±0.3291, cvg = 1.0000
+dog: p = 0.6580±0.2817, r = 0.6580±0.2817, f1 = 0.6580±0.2817, cvg = 0.0929
+horse: p = 0.6410±0.2488, r = 0.6410±0.2488, f1 = 0.6410±0.2488, cvg = 0.9495
+motorbike: p = 0.6150±0.2747, r = 0.6150±0.2747, f1 = 0.6150±0.2747, cvg = 0.5627
+person: p = 0.4070±0.2216, r = 0.4070±0.2216, f1 = 0.4070±0.2216, cvg = 0.0827
+pottedplant: p = 0.8164±0.2777, r = 0.8164±0.2777, f1 = 0.8164±0.2777, cvg = 0.2057
+sheep: p = 0.6649±0.2854, r = 0.6649±0.2854, f1 = 0.6649±0.2854, cvg = 0.2944
+sofa: p = 0.5224±0.3838, r = 0.5224±0.3838, f1 = 0.5224±0.3838, cvg = 0.9643
+train: p = 0.8184±0.2960, r = 0.8184±0.2960, f1 = 0.8184±0.2960, cvg = 0.6768
+tvmonitor: p = 0.8957±0.2624, r = 0.8957±0.2624, f1 = 0.8957±0.2624, cvg = 0.2442
+average accuracy: p = 0.6389±0.2963, r = 0.6389±0.2963, f1 = 0.6389±0.2963
+Evaluation complete in 27m 25s
+Predict time
+aeroplane = 0.0953±0.0044
+bicycle = 0.0995±0.0034
+bird = 0.0821±0.0033
+boat = 0.0769±0.0027
+bottle = 0.0892±0.0026
+bus = 0.0765±0.0023
+car = 0.0791±0.0041
+cat = 0.0917±0.0046
+chair = 0.0862±0.0034
+cow = 0.0967±0.0052
+diningtable = 0.0755±0.0001
+dog = 0.0902±0.0043
+horse = 0.0954±0.0050
+motorbike = 0.0867±0.0036
+person = 0.1069±0.0061
+pottedplant = 0.0778±0.0026
+sheep = 0.0866±0.0050
+sofa = 0.0832±0.0022
+train = 0.0704±0.0024
+tvmonitor = 0.0728±0.0017
+average time = 0.0867±0.0104
+gt perm mat cache deleted
+Epoch 12/29
+----------
+lr = 1.00e-04
+Epoch 12   Iteration 100  6.27sample/s Loss=0.3670  
+Epoch 12   Iteration 200  6.29sample/s Loss=0.3661  
+Epoch 12   Iteration 300  6.29sample/s Loss=0.3482  
+Epoch 12   Iteration 400  6.25sample/s Loss=0.3411  
+Epoch 12   Iteration 500  6.23sample/s Loss=0.3733  
+Epoch 12   Iteration 600  6.23sample/s Loss=0.3808  
+Epoch 12   Iteration 700  6.25sample/s Loss=0.3203  
+Epoch 12   Iteration 800  6.31sample/s Loss=0.3337  
+Epoch 12   Iteration 900  6.22sample/s Loss=0.3523  
+Epoch 12   Iteration 1000 6.34sample/s Loss=0.3203  
+Epoch 12   Iteration 1100 6.26sample/s Loss=0.3428  
+Epoch 12   Iteration 1200 6.30sample/s Loss=0.3094  
+Epoch 12   Iteration 1300 6.30sample/s Loss=0.3301  
+Epoch 12   Iteration 1400 6.29sample/s Loss=0.3105  
+Epoch 12   Iteration 1500 6.35sample/s Loss=0.2869  
+Epoch 12   Iteration 1600 6.27sample/s Loss=0.3223  
+Epoch 12   Iteration 1700 6.28sample/s Loss=0.3124  
+Epoch 12   Iteration 1800 6.32sample/s Loss=0.3029  
+Epoch 12   Iteration 1900 6.42sample/s Loss=0.3106  
+Epoch 12   Iteration 2000 6.28sample/s Loss=0.3213  
+Epoch 12   Loss: 0.3326
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4453±0.2673, r = 0.4453±0.2673, f1 = 0.4453±0.2673, cvg = 0.1084
+bicycle: p = 0.6028±0.2620, r = 0.6028±0.2620, f1 = 0.6028±0.2620, cvg = 0.7257
+bird: p = 0.6594±0.3131, r = 0.6594±0.3131, f1 = 0.6594±0.3131, cvg = 0.1418
+boat: p = 0.5340±0.3561, r = 0.5340±0.3561, f1 = 0.5340±0.3561, cvg = 0.2505
+bottle: p = 0.7762±0.3300, r = 0.7762±0.3300, f1 = 0.7762±0.3300, cvg = 0.1396
+bus: p = 0.7139±0.3526, r = 0.7139±0.3526, f1 = 0.7139±0.3526, cvg = 0.7142
+car: p = 0.6386±0.3145, r = 0.6386±0.3145, f1 = 0.6386±0.3145, cvg = 0.0761
+cat: p = 0.6790±0.2961, r = 0.6790±0.2961, f1 = 0.6790±0.2961, cvg = 0.1974
+chair: p = 0.4132±0.3077, r = 0.4132±0.3077, f1 = 0.4132±0.3077, cvg = 0.4895
+cow: p = 0.6331±0.2649, r = 0.6331±0.2649, f1 = 0.6331±0.2649, cvg = 0.6519
+diningtable: p = 0.6117±0.3291, r = 0.6117±0.3291, f1 = 0.6117±0.3291, cvg = 1.0000
+dog: p = 0.6484±0.2835, r = 0.6484±0.2835, f1 = 0.6484±0.2835, cvg = 0.0929
+horse: p = 0.6340±0.2499, r = 0.6340±0.2499, f1 = 0.6340±0.2499, cvg = 0.9495
+motorbike: p = 0.6078±0.2723, r = 0.6078±0.2723, f1 = 0.6078±0.2723, cvg = 0.5627
+person: p = 0.4093±0.2243, r = 0.4093±0.2243, f1 = 0.4093±0.2243, cvg = 0.0827
+pottedplant: p = 0.8084±0.2791, r = 0.8084±0.2791, f1 = 0.8084±0.2791, cvg = 0.2057
+sheep: p = 0.6642±0.2884, r = 0.6642±0.2884, f1 = 0.6642±0.2884, cvg = 0.2944
+sofa: p = 0.5079±0.3648, r = 0.5079±0.3648, f1 = 0.5079±0.3648, cvg = 0.9643
+train: p = 0.8138±0.2961, r = 0.8138±0.2961, f1 = 0.8138±0.2961, cvg = 0.6768
+tvmonitor: p = 0.8916±0.2647, r = 0.8916±0.2647, f1 = 0.8916±0.2647, cvg = 0.2442
+average accuracy: p = 0.6346±0.2958, r = 0.6346±0.2958, f1 = 0.6346±0.2958
+Evaluation complete in 27m 13s
+Predict time
+aeroplane = 0.0941±0.0050
+bicycle = 0.0997±0.0040
+bird = 0.0820±0.0037
+boat = 0.0762±0.0026
+bottle = 0.0888±0.0025
+bus = 0.0764±0.0082
+car = 0.0780±0.0029
+cat = 0.0909±0.0055
+chair = 0.0855±0.0039
+cow = 0.0949±0.0055
+diningtable = 0.0753±0.0002
+dog = 0.0897±0.0116
+horse = 0.0953±0.0051
+motorbike = 0.0865±0.0049
+person = 0.1056±0.0062
+pottedplant = 0.0767±0.0019
+sheep = 0.0860±0.0046
+sofa = 0.0847±0.0029
+train = 0.0703±0.0019
+tvmonitor = 0.0722±0.0015
+average time = 0.0860±0.0108
+gt perm mat cache deleted
+Epoch 13/29
+----------
+lr = 1.00e-04
+Epoch 13   Iteration 100  6.29sample/s Loss=0.2938  
+Epoch 13   Iteration 200  6.31sample/s Loss=0.2891  
+Epoch 13   Iteration 300  6.33sample/s Loss=0.2752  
+Epoch 13   Iteration 400  6.31sample/s Loss=0.2719  
+Epoch 13   Iteration 500  6.28sample/s Loss=0.3045  
+Epoch 13   Iteration 600  6.30sample/s Loss=0.3242  
+Epoch 13   Iteration 700  6.30sample/s Loss=0.2786  
+Epoch 13   Iteration 800  6.37sample/s Loss=0.2620  
+Epoch 13   Iteration 900  6.26sample/s Loss=0.2832  
+Epoch 13   Iteration 1000 6.36sample/s Loss=0.2608  
+Epoch 13   Iteration 1100 6.28sample/s Loss=0.2855  
+Epoch 13   Iteration 1200 6.36sample/s Loss=0.2520  
+Epoch 13   Iteration 1300 6.32sample/s Loss=0.2553  
+Epoch 13   Iteration 1400 6.31sample/s Loss=0.2448  
+Epoch 13   Iteration 1500 6.38sample/s Loss=0.2288  
+Epoch 13   Iteration 1600 6.27sample/s Loss=0.2669  
+Epoch 13   Iteration 1700 6.27sample/s Loss=0.2538  
+Epoch 13   Iteration 1800 5.82sample/s Loss=0.2475  
+Epoch 13   Iteration 1900 6.42sample/s Loss=0.2477  
+Epoch 13   Iteration 2000 6.26sample/s Loss=0.2627  
+Epoch 13   Loss: 0.2694
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4437±0.2657, r = 0.4437±0.2657, f1 = 0.4437±0.2657, cvg = 0.1084
+bicycle: p = 0.5923±0.2626, r = 0.5923±0.2626, f1 = 0.5923±0.2626, cvg = 0.7257
+bird: p = 0.6523±0.3138, r = 0.6523±0.3138, f1 = 0.6523±0.3138, cvg = 0.1418
+boat: p = 0.5272±0.3538, r = 0.5272±0.3538, f1 = 0.5272±0.3538, cvg = 0.2505
+bottle: p = 0.7781±0.3291, r = 0.7781±0.3291, f1 = 0.7781±0.3291, cvg = 0.1396
+bus: p = 0.7183±0.3511, r = 0.7183±0.3511, f1 = 0.7183±0.3511, cvg = 0.7142
+car: p = 0.6415±0.3082, r = 0.6415±0.3082, f1 = 0.6415±0.3082, cvg = 0.0761
+cat: p = 0.6736±0.2964, r = 0.6736±0.2964, f1 = 0.6736±0.2964, cvg = 0.1974
+chair: p = 0.4072±0.3066, r = 0.4072±0.3066, f1 = 0.4072±0.3066, cvg = 0.4895
+cow: p = 0.6254±0.2609, r = 0.6254±0.2609, f1 = 0.6254±0.2609, cvg = 0.6519
+diningtable: p = 0.6250±0.3481, r = 0.6250±0.3481, f1 = 0.6250±0.3481, cvg = 1.0000
+dog: p = 0.6501±0.2777, r = 0.6501±0.2777, f1 = 0.6501±0.2777, cvg = 0.0929
+horse: p = 0.6351±0.2498, r = 0.6351±0.2498, f1 = 0.6351±0.2498, cvg = 0.9495
+motorbike: p = 0.6022±0.2754, r = 0.6022±0.2754, f1 = 0.6022±0.2754, cvg = 0.5627
+person: p = 0.4053±0.2272, r = 0.4053±0.2272, f1 = 0.4053±0.2272, cvg = 0.0827
+pottedplant: p = 0.8021±0.2856, r = 0.8021±0.2856, f1 = 0.8021±0.2856, cvg = 0.2057
+sheep: p = 0.6570±0.2878, r = 0.6570±0.2878, f1 = 0.6570±0.2878, cvg = 0.2944
+sofa: p = 0.5237±0.3578, r = 0.5237±0.3578, f1 = 0.5237±0.3578, cvg = 0.9643
+train: p = 0.8073±0.3013, r = 0.8073±0.3013, f1 = 0.8073±0.3013, cvg = 0.6768
+tvmonitor: p = 0.8910±0.2681, r = 0.8910±0.2681, f1 = 0.8910±0.2681, cvg = 0.2442
+average accuracy: p = 0.6329±0.2963, r = 0.6329±0.2963, f1 = 0.6329±0.2963
+Evaluation complete in 27m 11s
+Predict time
+aeroplane = 0.0943±0.0041
+bicycle = 0.0979±0.0033
+bird = 0.0817±0.0032
+boat = 0.0765±0.0027
+bottle = 0.0889±0.0024
+bus = 0.0760±0.0018
+car = 0.0779±0.0033
+cat = 0.0904±0.0043
+chair = 0.0860±0.0041
+cow = 0.0958±0.0055
+diningtable = 0.0761±0.0007
+dog = 0.0895±0.0046
+horse = 0.0942±0.0050
+motorbike = 0.0862±0.0033
+person = 0.1058±0.0061
+pottedplant = 0.0771±0.0020
+sheep = 0.0859±0.0050
+sofa = 0.0818±0.0024
+train = 0.0699±0.0016
+tvmonitor = 0.0724±0.0021
+average time = 0.0859±0.0102
+gt perm mat cache deleted
+Epoch 14/29
+----------
+lr = 1.00e-04
+Epoch 14   Iteration 100  6.28sample/s Loss=0.2404  
+Epoch 14   Iteration 200  6.34sample/s Loss=0.2337  
+Epoch 14   Iteration 300  6.34sample/s Loss=0.2254  
+Epoch 14   Iteration 400  6.30sample/s Loss=0.2247  
+Epoch 14   Iteration 500  6.27sample/s Loss=0.2503  
+Epoch 14   Iteration 600  6.27sample/s Loss=0.2543  
+Epoch 14   Iteration 700  6.29sample/s Loss=0.2293  
+Epoch 14   Iteration 800  6.36sample/s Loss=0.2202  
+Epoch 14   Iteration 900  6.30sample/s Loss=0.2277  
+Epoch 14   Iteration 1000 6.36sample/s Loss=0.2035  
+Epoch 14   Iteration 1100 6.28sample/s Loss=0.2412  
+Epoch 14   Iteration 1200 6.35sample/s Loss=0.2097  
+Epoch 14   Iteration 1300 6.36sample/s Loss=0.2088  
+Epoch 14   Iteration 1400 6.33sample/s Loss=0.2131  
+Epoch 14   Iteration 1500 6.38sample/s Loss=0.1929  
+Epoch 14   Iteration 1600 6.27sample/s Loss=0.2116  
+Epoch 14   Iteration 1700 6.31sample/s Loss=0.2026  
+Epoch 14   Iteration 1800 6.36sample/s Loss=0.1962  
+Epoch 14   Iteration 1900 6.43sample/s Loss=0.1925  
+Epoch 14   Iteration 2000 6.31sample/s Loss=0.2082  
+Epoch 14   Loss: 0.2193
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4455±0.2668, r = 0.4455±0.2668, f1 = 0.4455±0.2668, cvg = 0.1084
+bicycle: p = 0.5889±0.2607, r = 0.5889±0.2607, f1 = 0.5889±0.2607, cvg = 0.7257
+bird: p = 0.6566±0.3173, r = 0.6566±0.3173, f1 = 0.6566±0.3173, cvg = 0.1418
+boat: p = 0.5283±0.3548, r = 0.5283±0.3548, f1 = 0.5283±0.3548, cvg = 0.2505
+bottle: p = 0.7709±0.3282, r = 0.7709±0.3282, f1 = 0.7709±0.3282, cvg = 0.1396
+bus: p = 0.7108±0.3575, r = 0.7108±0.3575, f1 = 0.7108±0.3575, cvg = 0.7142
+car: p = 0.6364±0.3105, r = 0.6364±0.3105, f1 = 0.6364±0.3105, cvg = 0.0761
+cat: p = 0.6742±0.2996, r = 0.6742±0.2996, f1 = 0.6742±0.2996, cvg = 0.1974
+chair: p = 0.3994±0.3059, r = 0.3994±0.3059, f1 = 0.3994±0.3059, cvg = 0.4895
+cow: p = 0.6216±0.2637, r = 0.6216±0.2637, f1 = 0.6216±0.2637, cvg = 0.6519
+diningtable: p = 0.6283±0.3596, r = 0.6283±0.3596, f1 = 0.6283±0.3596, cvg = 1.0000
+dog: p = 0.6458±0.2819, r = 0.6458±0.2819, f1 = 0.6458±0.2819, cvg = 0.0929
+horse: p = 0.6280±0.2486, r = 0.6280±0.2486, f1 = 0.6280±0.2486, cvg = 0.9495
+motorbike: p = 0.6002±0.2762, r = 0.6002±0.2762, f1 = 0.6002±0.2762, cvg = 0.5627
+person: p = 0.4054±0.2227, r = 0.4054±0.2227, f1 = 0.4054±0.2227, cvg = 0.0827
+pottedplant: p = 0.7916±0.2869, r = 0.7916±0.2869, f1 = 0.7916±0.2869, cvg = 0.2057
+sheep: p = 0.6608±0.2876, r = 0.6608±0.2876, f1 = 0.6608±0.2876, cvg = 0.2944
+sofa: p = 0.5618±0.3558, r = 0.5618±0.3558, f1 = 0.5618±0.3558, cvg = 0.9643
+train: p = 0.8085±0.3019, r = 0.8085±0.3019, f1 = 0.8085±0.3019, cvg = 0.6768
+tvmonitor: p = 0.8901±0.2676, r = 0.8901±0.2676, f1 = 0.8901±0.2676, cvg = 0.2442
+average accuracy: p = 0.6327±0.2977, r = 0.6327±0.2977, f1 = 0.6327±0.2977
+Evaluation complete in 27m 6s
+Predict time
+aeroplane = 0.0940±0.0043
+bicycle = 0.0980±0.0034
+bird = 0.0817±0.0033
+boat = 0.0762±0.0033
+bottle = 0.0883±0.0027
+bus = 0.0759±0.0029
+car = 0.0777±0.0031
+cat = 0.0901±0.0044
+chair = 0.0857±0.0037
+cow = 0.0950±0.0045
+diningtable = 0.0750±0.0009
+dog = 0.0896±0.0054
+horse = 0.0948±0.0053
+motorbike = 0.0855±0.0037
+person = 0.1046±0.0067
+pottedplant = 0.0766±0.0017
+sheep = 0.0858±0.0109
+sofa = 0.0825±0.0022
+train = 0.0700±0.0023
+tvmonitor = 0.0719±0.0020
+average time = 0.0856±0.0104
+gt perm mat cache deleted
+Epoch 15/29
+----------
+lr = 1.00e-04
+Epoch 15   Iteration 100  6.36sample/s Loss=0.1926  
+Epoch 15   Iteration 200  6.34sample/s Loss=0.1820  
+Epoch 15   Iteration 300  6.34sample/s Loss=0.1837  
+Epoch 15   Iteration 400  6.32sample/s Loss=0.1854  
+Epoch 15   Iteration 500  6.31sample/s Loss=0.1952  
+Epoch 15   Iteration 600  6.35sample/s Loss=0.2007  
+Epoch 15   Iteration 700  6.33sample/s Loss=0.1678  
+Epoch 15   Iteration 800  6.38sample/s Loss=0.1756  
+Epoch 15   Iteration 900  6.31sample/s Loss=0.2056  
+Epoch 15   Iteration 1000 6.38sample/s Loss=0.1793  
+Epoch 15   Iteration 1100 6.31sample/s Loss=0.1994  
+Epoch 15   Iteration 1200 6.34sample/s Loss=0.1720  
+Epoch 15   Iteration 1300 6.35sample/s Loss=0.1717  
+Epoch 15   Iteration 1400 6.33sample/s Loss=0.1700  
+Epoch 15   Iteration 1500 6.37sample/s Loss=0.1469  
+Epoch 15   Iteration 1600 6.29sample/s Loss=0.1737  
+Epoch 15   Iteration 1700 6.29sample/s Loss=0.1701  
+Epoch 15   Iteration 1800 6.33sample/s Loss=0.1650  
+Epoch 15   Iteration 1900 6.38sample/s Loss=0.1571  
+Epoch 15   Iteration 2000 6.28sample/s Loss=0.1624  
+Epoch 15   Loss: 0.1778
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4360±0.2601, r = 0.4360±0.2601, f1 = 0.4360±0.2601, cvg = 0.1084
+bicycle: p = 0.5896±0.2614, r = 0.5896±0.2614, f1 = 0.5896±0.2614, cvg = 0.7257
+bird: p = 0.6463±0.3156, r = 0.6463±0.3156, f1 = 0.6463±0.3156, cvg = 0.1418
+boat: p = 0.5311±0.3511, r = 0.5311±0.3511, f1 = 0.5311±0.3511, cvg = 0.2505
+bottle: p = 0.7716±0.3287, r = 0.7716±0.3287, f1 = 0.7716±0.3287, cvg = 0.1396
+bus: p = 0.7120±0.3520, r = 0.7120±0.3520, f1 = 0.7120±0.3520, cvg = 0.7142
+car: p = 0.6299±0.3116, r = 0.6299±0.3116, f1 = 0.6299±0.3116, cvg = 0.0761
+cat: p = 0.6688±0.3001, r = 0.6688±0.3001, f1 = 0.6688±0.3001, cvg = 0.1974
+chair: p = 0.4054±0.3065, r = 0.4054±0.3065, f1 = 0.4054±0.3065, cvg = 0.4895
+cow: p = 0.6219±0.2656, r = 0.6219±0.2656, f1 = 0.6219±0.2656, cvg = 0.6519
+diningtable: p = 0.5883±0.3376, r = 0.5883±0.3376, f1 = 0.5883±0.3376, cvg = 1.0000
+dog: p = 0.6387±0.2801, r = 0.6387±0.2801, f1 = 0.6387±0.2801, cvg = 0.0929
+horse: p = 0.6248±0.2495, r = 0.6248±0.2495, f1 = 0.6248±0.2495, cvg = 0.9495
+motorbike: p = 0.5963±0.2719, r = 0.5963±0.2719, f1 = 0.5963±0.2719, cvg = 0.5627
+person: p = 0.4035±0.2218, r = 0.4035±0.2218, f1 = 0.4035±0.2218, cvg = 0.0827
+pottedplant: p = 0.7942±0.2862, r = 0.7942±0.2862, f1 = 0.7942±0.2862, cvg = 0.2057
+sheep: p = 0.6580±0.2866, r = 0.6580±0.2866, f1 = 0.6580±0.2866, cvg = 0.2944
+sofa: p = 0.4806±0.3599, r = 0.4806±0.3599, f1 = 0.4806±0.3599, cvg = 0.9643
+train: p = 0.8016±0.3049, r = 0.8016±0.3049, f1 = 0.8016±0.3049, cvg = 0.6768
+tvmonitor: p = 0.8908±0.2659, r = 0.8908±0.2659, f1 = 0.8908±0.2659, cvg = 0.2442
+average accuracy: p = 0.6245±0.2959, r = 0.6245±0.2959, f1 = 0.6245±0.2959
+Evaluation complete in 27m 19s
+Predict time
+aeroplane = 0.0941±0.0043
+bicycle = 0.0992±0.0037
+bird = 0.0817±0.0032
+boat = 0.0766±0.0028
+bottle = 0.0880±0.0016
+bus = 0.0754±0.0022
+car = 0.0776±0.0030
+cat = 0.0908±0.0048
+chair = 0.0853±0.0033
+cow = 0.0960±0.0053
+diningtable = 0.0763±0.0002
+dog = 0.0898±0.0041
+horse = 0.0945±0.0061
+motorbike = 0.0864±0.0036
+person = 0.1059±0.0058
+pottedplant = 0.0774±0.0024
+sheep = 0.0869±0.0053
+sofa = 0.0818±0.0025
+train = 0.0706±0.0021
+tvmonitor = 0.0723±0.0014
+average time = 0.0860±0.0103
+gt perm mat cache deleted
+Epoch 16/29
+----------
+lr = 1.00e-04
+Epoch 16   Iteration 100  6.24sample/s Loss=0.1719  
+Epoch 16   Iteration 200  6.31sample/s Loss=0.1556  
+Epoch 16   Iteration 300  6.32sample/s Loss=0.1515  
+Epoch 16   Iteration 400  6.30sample/s Loss=0.1715  
+Epoch 16   Iteration 500  6.30sample/s Loss=0.1853  
+Epoch 16   Iteration 600  6.25sample/s Loss=0.2105  
+Epoch 16   Iteration 700  6.30sample/s Loss=0.1674  
+Epoch 16   Iteration 800  6.41sample/s Loss=0.1525  
+Epoch 16   Iteration 900  6.30sample/s Loss=0.1612  
+Epoch 16   Iteration 1000 6.31sample/s Loss=0.1471  
+Epoch 16   Iteration 1100 6.34sample/s Loss=0.1982  
+Epoch 16   Iteration 1200 6.41sample/s Loss=0.1666  
+Epoch 16   Iteration 1300 6.38sample/s Loss=0.1561  
+Epoch 16   Iteration 1400 6.36sample/s Loss=0.1528  
+Epoch 16   Iteration 1500 6.40sample/s Loss=0.1421  
+Epoch 16   Iteration 1600 6.29sample/s Loss=0.1596  
+Epoch 16   Iteration 1700 6.31sample/s Loss=0.1374  
+Epoch 16   Iteration 1800 6.34sample/s Loss=0.1371  
+Epoch 16   Iteration 1900 6.35sample/s Loss=0.1293  
+Epoch 16   Iteration 2000 6.31sample/s Loss=0.1414  
+Epoch 16   Loss: 0.1598
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4344±0.2575, r = 0.4344±0.2575, f1 = 0.4344±0.2575, cvg = 0.1084
+bicycle: p = 0.5909±0.2626, r = 0.5909±0.2626, f1 = 0.5909±0.2626, cvg = 0.7257
+bird: p = 0.6449±0.3167, r = 0.6449±0.3167, f1 = 0.6449±0.3167, cvg = 0.1418
+boat: p = 0.5286±0.3544, r = 0.5286±0.3544, f1 = 0.5286±0.3544, cvg = 0.2505
+bottle: p = 0.7702±0.3294, r = 0.7702±0.3294, f1 = 0.7702±0.3294, cvg = 0.1396
+bus: p = 0.7106±0.3559, r = 0.7106±0.3559, f1 = 0.7106±0.3559, cvg = 0.7142
+car: p = 0.6241±0.3075, r = 0.6241±0.3075, f1 = 0.6241±0.3075, cvg = 0.0761
+cat: p = 0.6677±0.3007, r = 0.6677±0.3007, f1 = 0.6677±0.3007, cvg = 0.1974
+chair: p = 0.4005±0.3008, r = 0.4005±0.3008, f1 = 0.4005±0.3008, cvg = 0.4895
+cow: p = 0.6123±0.2666, r = 0.6123±0.2666, f1 = 0.6123±0.2666, cvg = 0.6519
+diningtable: p = 0.6083±0.3874, r = 0.6083±0.3874, f1 = 0.6083±0.3874, cvg = 1.0000
+dog: p = 0.6386±0.2773, r = 0.6386±0.2773, f1 = 0.6386±0.2773, cvg = 0.0929
+horse: p = 0.6193±0.2527, r = 0.6193±0.2527, f1 = 0.6193±0.2527, cvg = 0.9495
+motorbike: p = 0.5966±0.2775, r = 0.5966±0.2775, f1 = 0.5966±0.2775, cvg = 0.5627
+person: p = 0.4001±0.2253, r = 0.4001±0.2253, f1 = 0.4001±0.2253, cvg = 0.0827
+pottedplant: p = 0.7930±0.2855, r = 0.7930±0.2855, f1 = 0.7930±0.2855, cvg = 0.2057
+sheep: p = 0.6536±0.2854, r = 0.6536±0.2854, f1 = 0.6536±0.2854, cvg = 0.2944
+sofa: p = 0.5506±0.3602, r = 0.5506±0.3602, f1 = 0.5506±0.3602, cvg = 0.9643
+train: p = 0.8003±0.3077, r = 0.8003±0.3077, f1 = 0.8003±0.3077, cvg = 0.6768
+tvmonitor: p = 0.8869±0.2672, r = 0.8869±0.2672, f1 = 0.8869±0.2672, cvg = 0.2442
+average accuracy: p = 0.6266±0.2989, r = 0.6266±0.2989, f1 = 0.6266±0.2989
+Evaluation complete in 27m 8s
+Predict time
+aeroplane = 0.0940±0.0043
+bicycle = 0.0991±0.0036
+bird = 0.0818±0.0036
+boat = 0.0766±0.0026
+bottle = 0.0886±0.0027
+bus = 0.0759±0.0023
+car = 0.0778±0.0030
+cat = 0.0903±0.0044
+chair = 0.0857±0.0037
+cow = 0.0955±0.0047
+diningtable = 0.0753±0.0005
+dog = 0.0894±0.0038
+horse = 0.0941±0.0050
+motorbike = 0.0859±0.0039
+person = 0.1055±0.0066
+pottedplant = 0.0769±0.0020
+sheep = 0.0862±0.0050
+sofa = 0.0821±0.0010
+train = 0.0700±0.0021
+tvmonitor = 0.0720±0.0016
+average time = 0.0859±0.0102
+gt perm mat cache deleted
+Epoch 17/29
+----------
+lr = 1.00e-04
+Epoch 17   Iteration 100  6.32sample/s Loss=0.1433  
+Epoch 17   Iteration 200  6.33sample/s Loss=0.1297  
+Epoch 17   Iteration 300  6.35sample/s Loss=0.1157  
+Epoch 17   Iteration 400  6.26sample/s Loss=0.1404  
+Epoch 17   Iteration 500  6.26sample/s Loss=0.1279  
+Epoch 17   Iteration 600  6.33sample/s Loss=0.1539  
+Epoch 17   Iteration 700  6.32sample/s Loss=0.1192  
+Epoch 17   Iteration 800  6.38sample/s Loss=0.1240  
+Epoch 17   Iteration 900  6.29sample/s Loss=0.1431  
+Epoch 17   Iteration 1000 6.37sample/s Loss=0.1255  
+Epoch 17   Iteration 1100 6.31sample/s Loss=0.1417  
+Epoch 17   Iteration 1200 6.36sample/s Loss=0.1117  
+Epoch 17   Iteration 1300 6.37sample/s Loss=0.1138  
+Epoch 17   Iteration 1400 6.35sample/s Loss=0.1068  
+Epoch 17   Iteration 1500 6.41sample/s Loss=0.1134  
+Epoch 17   Iteration 1600 6.32sample/s Loss=0.1328  
+Epoch 17   Iteration 1700 6.33sample/s Loss=0.1100  
+Epoch 17   Iteration 1800 6.34sample/s Loss=0.1066  
+Epoch 17   Iteration 1900 6.42sample/s Loss=0.1032  
+Epoch 17   Iteration 2000 6.28sample/s Loss=0.1305  
+Epoch 17   Loss: 0.1247
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4321±0.2560, r = 0.4321±0.2560, f1 = 0.4321±0.2560, cvg = 0.1084
+bicycle: p = 0.5854±0.2651, r = 0.5854±0.2651, f1 = 0.5854±0.2651, cvg = 0.7257
+bird: p = 0.6486±0.3159, r = 0.6486±0.3159, f1 = 0.6486±0.3159, cvg = 0.1418
+boat: p = 0.5319±0.3578, r = 0.5319±0.3578, f1 = 0.5319±0.3578, cvg = 0.2505
+bottle: p = 0.7708±0.3264, r = 0.7708±0.3264, f1 = 0.7708±0.3264, cvg = 0.1396
+bus: p = 0.7111±0.3522, r = 0.7111±0.3522, f1 = 0.7111±0.3522, cvg = 0.7142
+car: p = 0.6276±0.3128, r = 0.6276±0.3128, f1 = 0.6276±0.3128, cvg = 0.0761
+cat: p = 0.6684±0.2982, r = 0.6684±0.2982, f1 = 0.6684±0.2982, cvg = 0.1974
+chair: p = 0.3990±0.2993, r = 0.3990±0.2993, f1 = 0.3990±0.2993, cvg = 0.4895
+cow: p = 0.6153±0.2625, r = 0.6153±0.2625, f1 = 0.6153±0.2625, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6381±0.2800, r = 0.6381±0.2800, f1 = 0.6381±0.2800, cvg = 0.0929
+horse: p = 0.6225±0.2488, r = 0.6225±0.2488, f1 = 0.6225±0.2488, cvg = 0.9495
+motorbike: p = 0.5909±0.2740, r = 0.5909±0.2740, f1 = 0.5909±0.2740, cvg = 0.5627
+person: p = 0.3951±0.2222, r = 0.3951±0.2222, f1 = 0.3951±0.2222, cvg = 0.0827
+pottedplant: p = 0.7868±0.2914, r = 0.7868±0.2914, f1 = 0.7868±0.2914, cvg = 0.2057
+sheep: p = 0.6526±0.2851, r = 0.6526±0.2851, f1 = 0.6526±0.2851, cvg = 0.2944
+sofa: p = 0.5731±0.3821, r = 0.5731±0.3821, f1 = 0.5731±0.3821, cvg = 0.9643
+train: p = 0.8060±0.3036, r = 0.8060±0.3036, f1 = 0.8060±0.3036, cvg = 0.6768
+tvmonitor: p = 0.8898±0.2664, r = 0.8898±0.2664, f1 = 0.8898±0.2664, cvg = 0.2442
+average accuracy: p = 0.6273±0.2962, r = 0.6273±0.2962, f1 = 0.6273±0.2962
+Evaluation complete in 27m 7s
+Predict time
+aeroplane = 0.0940±0.0046
+bicycle = 0.0982±0.0034
+bird = 0.0818±0.0035
+boat = 0.0764±0.0027
+bottle = 0.0884±0.0026
+bus = 0.0757±0.0022
+car = 0.0777±0.0028
+cat = 0.0903±0.0046
+chair = 0.0855±0.0032
+cow = 0.0953±0.0052
+diningtable = 0.0751±0.0013
+dog = 0.0893±0.0041
+horse = 0.0945±0.0046
+motorbike = 0.0863±0.0036
+person = 0.1053±0.0055
+pottedplant = 0.0767±0.0017
+sheep = 0.0856±0.0050
+sofa = 0.0822±0.0035
+train = 0.0695±0.0018
+tvmonitor = 0.0719±0.0016
+average time = 0.0857±0.0102
+gt perm mat cache deleted
+Epoch 18/29
+----------
+lr = 1.00e-04
+Epoch 18   Iteration 100  6.31sample/s Loss=0.1237  
+Epoch 18   Iteration 200  6.33sample/s Loss=0.1098  
+Epoch 18   Iteration 300  6.30sample/s Loss=0.1168  
+Epoch 18   Iteration 400  6.30sample/s Loss=0.1097  
+Epoch 18   Iteration 500  6.29sample/s Loss=0.1217  
+Epoch 18   Iteration 600  6.31sample/s Loss=0.1165  
+Epoch 18   Iteration 700  6.31sample/s Loss=0.1148  
+Epoch 18   Iteration 800  6.37sample/s Loss=0.1184  
+Epoch 18   Iteration 900  6.30sample/s Loss=0.1290  
+Epoch 18   Iteration 1000 6.37sample/s Loss=0.1062  
+Epoch 18   Iteration 1100 6.28sample/s Loss=0.1186  
+Epoch 18   Iteration 1200 6.32sample/s Loss=0.1144  
+Epoch 18   Iteration 1300 6.35sample/s Loss=0.1070  
+Epoch 18   Iteration 1400 6.33sample/s Loss=0.0939  
+Epoch 18   Iteration 1500 6.40sample/s Loss=0.1101  
+Epoch 18   Iteration 1600 6.30sample/s Loss=0.1444  
+Epoch 18   Iteration 1700 6.32sample/s Loss=0.1163  
+Epoch 18   Iteration 1800 6.38sample/s Loss=0.1099  
+Epoch 18   Iteration 1900 6.43sample/s Loss=0.1068  
+Epoch 18   Iteration 2000 6.31sample/s Loss=0.1110  
+Epoch 18   Loss: 0.1150
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4316±0.2645, r = 0.4316±0.2645, f1 = 0.4316±0.2645, cvg = 0.1084
+bicycle: p = 0.5886±0.2612, r = 0.5886±0.2612, f1 = 0.5886±0.2612, cvg = 0.7257
+bird: p = 0.6523±0.3136, r = 0.6523±0.3136, f1 = 0.6523±0.3136, cvg = 0.1418
+boat: p = 0.5306±0.3494, r = 0.5306±0.3494, f1 = 0.5306±0.3494, cvg = 0.2505
+bottle: p = 0.7737±0.3277, r = 0.7737±0.3277, f1 = 0.7737±0.3277, cvg = 0.1396
+bus: p = 0.7117±0.3516, r = 0.7117±0.3516, f1 = 0.7117±0.3516, cvg = 0.7142
+car: p = 0.6377±0.3078, r = 0.6377±0.3078, f1 = 0.6377±0.3078, cvg = 0.0761
+cat: p = 0.6672±0.2966, r = 0.6672±0.2966, f1 = 0.6672±0.2966, cvg = 0.1974
+chair: p = 0.3999±0.2997, r = 0.3999±0.2997, f1 = 0.3999±0.2997, cvg = 0.4895
+cow: p = 0.6158±0.2654, r = 0.6158±0.2654, f1 = 0.6158±0.2654, cvg = 0.6519
+diningtable: p = 0.5683±0.3649, r = 0.5683±0.3649, f1 = 0.5683±0.3649, cvg = 1.0000
+dog: p = 0.6343±0.2830, r = 0.6343±0.2830, f1 = 0.6343±0.2830, cvg = 0.0929
+horse: p = 0.6174±0.2468, r = 0.6174±0.2468, f1 = 0.6174±0.2468, cvg = 0.9495
+motorbike: p = 0.5952±0.2676, r = 0.5952±0.2676, f1 = 0.5952±0.2676, cvg = 0.5627
+person: p = 0.3866±0.2184, r = 0.3866±0.2184, f1 = 0.3866±0.2184, cvg = 0.0827
+pottedplant: p = 0.7904±0.2878, r = 0.7904±0.2878, f1 = 0.7904±0.2878, cvg = 0.2057
+sheep: p = 0.6485±0.2820, r = 0.6485±0.2820, f1 = 0.6485±0.2820, cvg = 0.2944
+sofa: p = 0.5164±0.3734, r = 0.5164±0.3734, f1 = 0.5164±0.3734, cvg = 0.9643
+train: p = 0.7980±0.3072, r = 0.7980±0.3072, f1 = 0.7980±0.3072, cvg = 0.6768
+tvmonitor: p = 0.8904±0.2682, r = 0.8904±0.2682, f1 = 0.8904±0.2682, cvg = 0.2442
+average accuracy: p = 0.6227±0.2968, r = 0.6227±0.2968, f1 = 0.6227±0.2968
+Evaluation complete in 26m 59s
+Predict time
+aeroplane = 0.0933±0.0044
+bicycle = 0.0981±0.0036
+bird = 0.0815±0.0039
+boat = 0.0766±0.0050
+bottle = 0.0874±0.0025
+bus = 0.0751±0.0026
+car = 0.0777±0.0034
+cat = 0.0892±0.0040
+chair = 0.0848±0.0032
+cow = 0.0951±0.0054
+diningtable = 0.0763±0.0006
+dog = 0.0890±0.0045
+horse = 0.0946±0.0063
+motorbike = 0.0855±0.0037
+person = 0.1051±0.0061
+pottedplant = 0.0772±0.0024
+sheep = 0.0856±0.0044
+sofa = 0.0811±0.0017
+train = 0.0695±0.0019
+tvmonitor = 0.0722±0.0023
+average time = 0.0854±0.0102
+gt perm mat cache deleted
+Epoch 19/29
+----------
+lr = 1.00e-04
+Epoch 19   Iteration 100  6.34sample/s Loss=0.1144  
+Epoch 19   Iteration 200  6.33sample/s Loss=0.1045  
+Epoch 19   Iteration 300  6.35sample/s Loss=0.1031  
+Epoch 19   Iteration 400  6.28sample/s Loss=0.1123  
+Epoch 19   Iteration 500  6.30sample/s Loss=0.1059  
+Epoch 19   Iteration 600  6.30sample/s Loss=0.1066  
+Epoch 19   Iteration 700  6.29sample/s Loss=0.0861  
+Epoch 19   Iteration 800  6.38sample/s Loss=0.0901  
+Epoch 19   Iteration 900  6.28sample/s Loss=0.0999  
+Epoch 19   Iteration 1000 6.37sample/s Loss=0.0942  
+Epoch 19   Iteration 1100 6.34sample/s Loss=0.1010  
+Epoch 19   Iteration 1200 6.37sample/s Loss=0.1035  
+Epoch 19   Iteration 1300 6.36sample/s Loss=0.1052  
+Epoch 19   Iteration 1400 6.33sample/s Loss=0.1137  
+Epoch 19   Iteration 1500 6.40sample/s Loss=0.1140  
+Epoch 19   Iteration 1600 6.30sample/s Loss=0.1032  
+Epoch 19   Iteration 1700 6.31sample/s Loss=0.0845  
+Epoch 19   Iteration 1800 6.36sample/s Loss=0.0904  
+Epoch 19   Iteration 1900 6.43sample/s Loss=0.0867  
+Epoch 19   Iteration 2000 6.28sample/s Loss=0.0862  
+Epoch 19   Loss: 0.1003
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4293±0.2599, r = 0.4293±0.2599, f1 = 0.4293±0.2599, cvg = 0.1084
+bicycle: p = 0.5815±0.2589, r = 0.5815±0.2589, f1 = 0.5815±0.2589, cvg = 0.7257
+bird: p = 0.6469±0.3198, r = 0.6469±0.3198, f1 = 0.6469±0.3198, cvg = 0.1418
+boat: p = 0.5346±0.3501, r = 0.5346±0.3501, f1 = 0.5346±0.3501, cvg = 0.2505
+bottle: p = 0.7795±0.3253, r = 0.7795±0.3253, f1 = 0.7795±0.3253, cvg = 0.1396
+bus: p = 0.7108±0.3495, r = 0.7108±0.3495, f1 = 0.7108±0.3495, cvg = 0.7142
+car: p = 0.6244±0.3083, r = 0.6244±0.3083, f1 = 0.6244±0.3083, cvg = 0.0761
+cat: p = 0.6660±0.2983, r = 0.6660±0.2983, f1 = 0.6660±0.2983, cvg = 0.1974
+chair: p = 0.3987±0.2938, r = 0.3987±0.2938, f1 = 0.3987±0.2938, cvg = 0.4895
+cow: p = 0.6182±0.2611, r = 0.6182±0.2611, f1 = 0.6182±0.2611, cvg = 0.6519
+diningtable: p = 0.6617±0.2558, r = 0.6617±0.2558, f1 = 0.6617±0.2558, cvg = 1.0000
+dog: p = 0.6394±0.2813, r = 0.6394±0.2813, f1 = 0.6394±0.2813, cvg = 0.0929
+horse: p = 0.6192±0.2451, r = 0.6192±0.2451, f1 = 0.6192±0.2451, cvg = 0.9495
+motorbike: p = 0.5876±0.2722, r = 0.5876±0.2722, f1 = 0.5876±0.2722, cvg = 0.5627
+person: p = 0.3972±0.2261, r = 0.3972±0.2261, f1 = 0.3972±0.2261, cvg = 0.0827
+pottedplant: p = 0.7943±0.2859, r = 0.7943±0.2859, f1 = 0.7943±0.2859, cvg = 0.2057
+sheep: p = 0.6498±0.2824, r = 0.6498±0.2824, f1 = 0.6498±0.2824, cvg = 0.2944
+sofa: p = 0.5043±0.3717, r = 0.5043±0.3717, f1 = 0.5043±0.3717, cvg = 0.9643
+train: p = 0.7951±0.3086, r = 0.7951±0.3086, f1 = 0.7951±0.3086, cvg = 0.6768
+tvmonitor: p = 0.8879±0.2671, r = 0.8879±0.2671, f1 = 0.8879±0.2671, cvg = 0.2442
+average accuracy: p = 0.6263±0.2911, r = 0.6263±0.2911, f1 = 0.6263±0.2911
+Evaluation complete in 27m 22s
+Predict time
+aeroplane = 0.0948±0.0047
+bicycle = 0.0993±0.0035
+bird = 0.0824±0.0084
+boat = 0.0769±0.0025
+bottle = 0.0907±0.0030
+bus = 0.0762±0.0019
+car = 0.0791±0.0031
+cat = 0.0904±0.0043
+chair = 0.0856±0.0042
+cow = 0.0957±0.0052
+diningtable = 0.0774±0.0003
+dog = 0.0905±0.0042
+horse = 0.0950±0.0054
+motorbike = 0.0864±0.0037
+person = 0.1060±0.0064
+pottedplant = 0.0776±0.0020
+sheep = 0.0865±0.0049
+sofa = 0.0841±0.0063
+train = 0.0700±0.0018
+tvmonitor = 0.0721±0.0015
+average time = 0.0864±0.0105
+gt perm mat cache deleted
+Epoch 20/29
+----------
+lr = 2.00e-05
+Epoch 20   Iteration 100  5.69sample/s Loss=0.0819  
+Epoch 20   Iteration 200  6.29sample/s Loss=0.0746  
+Epoch 20   Iteration 300  6.34sample/s Loss=0.0713  
+Epoch 20   Iteration 400  6.30sample/s Loss=0.0817  
+Epoch 20   Iteration 500  6.27sample/s Loss=0.0795  
+Epoch 20   Iteration 600  6.29sample/s Loss=0.0810  
+Epoch 20   Iteration 700  6.34sample/s Loss=0.0702  
+Epoch 20   Iteration 800  6.37sample/s Loss=0.0682  
+Epoch 20   Iteration 900  6.29sample/s Loss=0.0718  
+Epoch 20   Iteration 1000 6.41sample/s Loss=0.0666  
+Epoch 20   Iteration 1100 6.29sample/s Loss=0.0663  
+Epoch 20   Iteration 1200 6.36sample/s Loss=0.0687  
+Epoch 20   Iteration 1300 6.38sample/s Loss=0.0663  
+Epoch 20   Iteration 1400 6.33sample/s Loss=0.0816  
+Epoch 20   Iteration 1500 6.36sample/s Loss=0.0560  
+Epoch 20   Iteration 1600 6.31sample/s Loss=0.0632  
+Epoch 20   Iteration 1700 6.32sample/s Loss=0.0546  
+Epoch 20   Iteration 1800 6.31sample/s Loss=0.0564  
+Epoch 20   Iteration 1900 6.40sample/s Loss=0.0564  
+Epoch 20   Iteration 2000 6.30sample/s Loss=0.0497  
+Epoch 20   Loss: 0.0683
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4333±0.2592, r = 0.4333±0.2592, f1 = 0.4333±0.2592, cvg = 0.1084
+bicycle: p = 0.5895±0.2618, r = 0.5895±0.2618, f1 = 0.5895±0.2618, cvg = 0.7257
+bird: p = 0.6509±0.3188, r = 0.6509±0.3188, f1 = 0.6509±0.3188, cvg = 0.1418
+boat: p = 0.5244±0.3517, r = 0.5244±0.3517, f1 = 0.5244±0.3517, cvg = 0.2505
+bottle: p = 0.7814±0.3226, r = 0.7814±0.3226, f1 = 0.7814±0.3226, cvg = 0.1396
+bus: p = 0.7116±0.3502, r = 0.7116±0.3502, f1 = 0.7116±0.3502, cvg = 0.7142
+car: p = 0.6310±0.3069, r = 0.6310±0.3069, f1 = 0.6310±0.3069, cvg = 0.0761
+cat: p = 0.6687±0.2983, r = 0.6687±0.2983, f1 = 0.6687±0.2983, cvg = 0.1974
+chair: p = 0.3996±0.2958, r = 0.3996±0.2958, f1 = 0.3996±0.2958, cvg = 0.4895
+cow: p = 0.6177±0.2618, r = 0.6177±0.2618, f1 = 0.6177±0.2618, cvg = 0.6519
+diningtable: p = 0.6617±0.2558, r = 0.6617±0.2558, f1 = 0.6617±0.2558, cvg = 1.0000
+dog: p = 0.6417±0.2857, r = 0.6417±0.2857, f1 = 0.6417±0.2857, cvg = 0.0929
+horse: p = 0.6237±0.2422, r = 0.6237±0.2422, f1 = 0.6237±0.2422, cvg = 0.9495
+motorbike: p = 0.5864±0.2752, r = 0.5864±0.2752, f1 = 0.5864±0.2752, cvg = 0.5627
+person: p = 0.3981±0.2263, r = 0.3981±0.2263, f1 = 0.3981±0.2263, cvg = 0.0827
+pottedplant: p = 0.7987±0.2827, r = 0.7987±0.2827, f1 = 0.7987±0.2827, cvg = 0.2057
+sheep: p = 0.6541±0.2823, r = 0.6541±0.2823, f1 = 0.6541±0.2823, cvg = 0.2944
+sofa: p = 0.5372±0.3872, r = 0.5372±0.3872, f1 = 0.5372±0.3872, cvg = 0.9643
+train: p = 0.7987±0.3080, r = 0.7987±0.3080, f1 = 0.7987±0.3080, cvg = 0.6768
+tvmonitor: p = 0.8900±0.2658, r = 0.8900±0.2658, f1 = 0.8900±0.2658, cvg = 0.2442
+average accuracy: p = 0.6299±0.2919, r = 0.6299±0.2919, f1 = 0.6299±0.2919
+Evaluation complete in 27m 3s
+Predict time
+aeroplane = 0.0936±0.0042
+bicycle = 0.0984±0.0045
+bird = 0.0811±0.0031
+boat = 0.0764±0.0029
+bottle = 0.0881±0.0026
+bus = 0.0756±0.0022
+car = 0.0777±0.0030
+cat = 0.0902±0.0044
+chair = 0.0854±0.0039
+cow = 0.0947±0.0051
+diningtable = 0.0744±0.0001
+dog = 0.0892±0.0042
+horse = 0.0946±0.0058
+motorbike = 0.0857±0.0036
+person = 0.1057±0.0064
+pottedplant = 0.0768±0.0020
+sheep = 0.0855±0.0047
+sofa = 0.0812±0.0023
+train = 0.0694±0.0016
+tvmonitor = 0.0719±0.0017
+average time = 0.0856±0.0103
+gt perm mat cache deleted
+Epoch 21/29
+----------
+lr = 2.00e-05
+Epoch 21   Iteration 100  6.10sample/s Loss=0.0616  
+Epoch 21   Iteration 200  6.34sample/s Loss=0.0570  
+Epoch 21   Iteration 300  6.32sample/s Loss=0.0557  
+Epoch 21   Iteration 400  6.29sample/s Loss=0.0604  
+Epoch 21   Iteration 500  6.32sample/s Loss=0.0586  
+Epoch 21   Iteration 600  6.28sample/s Loss=0.0614  
+Epoch 21   Iteration 700  6.29sample/s Loss=0.0542  
+Epoch 21   Iteration 800  6.34sample/s Loss=0.0521  
+Epoch 21   Iteration 900  6.30sample/s Loss=0.0566  
+Epoch 21   Iteration 1000 6.40sample/s Loss=0.0522  
+Epoch 21   Iteration 1100 6.30sample/s Loss=0.0550  
+Epoch 21   Iteration 1200 6.38sample/s Loss=0.0526  
+Epoch 21   Iteration 1300 6.34sample/s Loss=0.0504  
+Epoch 21   Iteration 1400 6.36sample/s Loss=0.0554  
+Epoch 21   Iteration 1500 6.40sample/s Loss=0.0464  
+Epoch 21   Iteration 1600 6.30sample/s Loss=0.0517  
+Epoch 21   Iteration 1700 6.31sample/s Loss=0.0446  
+Epoch 21   Iteration 1800 6.31sample/s Loss=0.0467  
+Epoch 21   Iteration 1900 6.40sample/s Loss=0.0458  
+Epoch 21   Iteration 2000 6.31sample/s Loss=0.0438  
+Epoch 21   Loss: 0.0531
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4336±0.2598, r = 0.4336±0.2598, f1 = 0.4336±0.2598, cvg = 0.1084
+bicycle: p = 0.5924±0.2605, r = 0.5924±0.2605, f1 = 0.5924±0.2605, cvg = 0.7257
+bird: p = 0.6491±0.3176, r = 0.6491±0.3176, f1 = 0.6491±0.3176, cvg = 0.1418
+boat: p = 0.5279±0.3523, r = 0.5279±0.3523, f1 = 0.5279±0.3523, cvg = 0.2505
+bottle: p = 0.7777±0.3240, r = 0.7777±0.3240, f1 = 0.7777±0.3240, cvg = 0.1396
+bus: p = 0.7115±0.3520, r = 0.7115±0.3520, f1 = 0.7115±0.3520, cvg = 0.7142
+car: p = 0.6268±0.3067, r = 0.6268±0.3067, f1 = 0.6268±0.3067, cvg = 0.0761
+cat: p = 0.6698±0.2973, r = 0.6698±0.2973, f1 = 0.6698±0.2973, cvg = 0.1974
+chair: p = 0.4004±0.2972, r = 0.4004±0.2972, f1 = 0.4004±0.2972, cvg = 0.4895
+cow: p = 0.6164±0.2601, r = 0.6164±0.2601, f1 = 0.6164±0.2601, cvg = 0.6519
+diningtable: p = 0.6617±0.2558, r = 0.6617±0.2558, f1 = 0.6617±0.2558, cvg = 1.0000
+dog: p = 0.6455±0.2821, r = 0.6455±0.2821, f1 = 0.6455±0.2821, cvg = 0.0929
+horse: p = 0.6284±0.2428, r = 0.6284±0.2428, f1 = 0.6284±0.2428, cvg = 0.9495
+motorbike: p = 0.5896±0.2760, r = 0.5896±0.2760, f1 = 0.5896±0.2760, cvg = 0.5627
+person: p = 0.3984±0.2264, r = 0.3984±0.2264, f1 = 0.3984±0.2264, cvg = 0.0827
+pottedplant: p = 0.7947±0.2838, r = 0.7947±0.2838, f1 = 0.7947±0.2838, cvg = 0.2057
+sheep: p = 0.6529±0.2852, r = 0.6529±0.2852, f1 = 0.6529±0.2852, cvg = 0.2944
+sofa: p = 0.5548±0.3791, r = 0.5548±0.3791, f1 = 0.5548±0.3791, cvg = 0.9643
+train: p = 0.7998±0.3081, r = 0.7998±0.3081, f1 = 0.7998±0.3081, cvg = 0.6768
+tvmonitor: p = 0.8916±0.2642, r = 0.8916±0.2642, f1 = 0.8916±0.2642, cvg = 0.2442
+average accuracy: p = 0.6311±0.2915, r = 0.6311±0.2915, f1 = 0.6311±0.2915
+Evaluation complete in 27m 10s
+Predict time
+aeroplane = 0.0941±0.0048
+bicycle = 0.0982±0.0030
+bird = 0.0817±0.0033
+boat = 0.0764±0.0030
+bottle = 0.0884±0.0024
+bus = 0.0758±0.0093
+car = 0.0778±0.0030
+cat = 0.0903±0.0046
+chair = 0.0852±0.0032
+cow = 0.0956±0.0070
+diningtable = 0.0761±0.0005
+dog = 0.0898±0.0047
+horse = 0.0949±0.0053
+motorbike = 0.0863±0.0036
+person = 0.1055±0.0057
+pottedplant = 0.0770±0.0018
+sheep = 0.0863±0.0111
+sofa = 0.0802±0.0021
+train = 0.0696±0.0019
+tvmonitor = 0.0719±0.0020
+average time = 0.0858±0.0108
+gt perm mat cache deleted
+Epoch 22/29
+----------
+lr = 2.00e-05
+Epoch 22   Iteration 100  6.26sample/s Loss=0.0523  
+Epoch 22   Iteration 200  6.34sample/s Loss=0.0492  
+Epoch 22   Iteration 300  6.32sample/s Loss=0.0471  
+Epoch 22   Iteration 400  6.25sample/s Loss=0.0517  
+Epoch 22   Iteration 500  6.30sample/s Loss=0.0505  
+Epoch 22   Iteration 600  6.33sample/s Loss=0.0536  
+Epoch 22   Iteration 700  6.35sample/s Loss=0.0475  
+Epoch 22   Iteration 800  6.39sample/s Loss=0.0456  
+Epoch 22   Iteration 900  6.29sample/s Loss=0.0504  
+Epoch 22   Iteration 1000 6.38sample/s Loss=0.0466  
+Epoch 22   Iteration 1100 6.29sample/s Loss=0.0491  
+Epoch 22   Iteration 1200 6.35sample/s Loss=0.0464  
+Epoch 22   Iteration 1300 6.36sample/s Loss=0.0449  
+Epoch 22   Iteration 1400 6.35sample/s Loss=0.0482  
+Epoch 22   Iteration 1500 6.40sample/s Loss=0.0420  
+Epoch 22   Iteration 1600 6.30sample/s Loss=0.0448  
+Epoch 22   Iteration 1700 6.33sample/s Loss=0.0407  
+Epoch 22   Iteration 1800 6.35sample/s Loss=0.0402  
+Epoch 22   Iteration 1900 6.42sample/s Loss=0.0417  
+Epoch 22   Iteration 2000 6.29sample/s Loss=0.0404  
+Epoch 22   Loss: 0.0466
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4330±0.2596, r = 0.4330±0.2596, f1 = 0.4330±0.2596, cvg = 0.1084
+bicycle: p = 0.5931±0.2620, r = 0.5931±0.2620, f1 = 0.5931±0.2620, cvg = 0.7257
+bird: p = 0.6458±0.3172, r = 0.6458±0.3172, f1 = 0.6458±0.3172, cvg = 0.1418
+boat: p = 0.5274±0.3526, r = 0.5274±0.3526, f1 = 0.5274±0.3526, cvg = 0.2505
+bottle: p = 0.7787±0.3229, r = 0.7787±0.3229, f1 = 0.7787±0.3229, cvg = 0.1396
+bus: p = 0.7106±0.3531, r = 0.7106±0.3531, f1 = 0.7106±0.3531, cvg = 0.7142
+car: p = 0.6271±0.3052, r = 0.6271±0.3052, f1 = 0.6271±0.3052, cvg = 0.0761
+cat: p = 0.6688±0.2957, r = 0.6688±0.2957, f1 = 0.6688±0.2957, cvg = 0.1974
+chair: p = 0.4001±0.2984, r = 0.4001±0.2984, f1 = 0.4001±0.2984, cvg = 0.4895
+cow: p = 0.6166±0.2613, r = 0.6166±0.2613, f1 = 0.6166±0.2613, cvg = 0.6519
+diningtable: p = 0.6617±0.2558, r = 0.6617±0.2558, f1 = 0.6617±0.2558, cvg = 1.0000
+dog: p = 0.6418±0.2820, r = 0.6418±0.2820, f1 = 0.6418±0.2820, cvg = 0.0929
+horse: p = 0.6308±0.2434, r = 0.6308±0.2434, f1 = 0.6308±0.2434, cvg = 0.9495
+motorbike: p = 0.5899±0.2748, r = 0.5899±0.2748, f1 = 0.5899±0.2748, cvg = 0.5627
+person: p = 0.3970±0.2238, r = 0.3970±0.2238, f1 = 0.3970±0.2238, cvg = 0.0827
+pottedplant: p = 0.7952±0.2839, r = 0.7952±0.2839, f1 = 0.7952±0.2839, cvg = 0.2057
+sheep: p = 0.6524±0.2844, r = 0.6524±0.2844, f1 = 0.6524±0.2844, cvg = 0.2944
+sofa: p = 0.5548±0.3791, r = 0.5548±0.3791, f1 = 0.5548±0.3791, cvg = 0.9643
+train: p = 0.7998±0.3081, r = 0.7998±0.3081, f1 = 0.7998±0.3081, cvg = 0.6768
+tvmonitor: p = 0.8923±0.2638, r = 0.8923±0.2638, f1 = 0.8923±0.2638, cvg = 0.2442
+average accuracy: p = 0.6308±0.2914, r = 0.6308±0.2914, f1 = 0.6308±0.2914
+Evaluation complete in 27m 7s
+Predict time
+aeroplane = 0.0938±0.0039
+bicycle = 0.0984±0.0036
+bird = 0.0815±0.0073
+boat = 0.0761±0.0028
+bottle = 0.0885±0.0026
+bus = 0.0756±0.0023
+car = 0.0777±0.0027
+cat = 0.0908±0.0053
+chair = 0.0852±0.0033
+cow = 0.0952±0.0051
+diningtable = 0.0758±0.0003
+dog = 0.0896±0.0044
+horse = 0.0945±0.0052
+motorbike = 0.0862±0.0035
+person = 0.1050±0.0059
+pottedplant = 0.0773±0.0022
+sheep = 0.0862±0.0050
+sofa = 0.0814±0.0027
+train = 0.0700±0.0018
+tvmonitor = 0.0723±0.0023
+average time = 0.0858±0.0103
+gt perm mat cache deleted
+Epoch 23/29
+----------
+lr = 2.00e-05
+Epoch 23   Iteration 100  6.31sample/s Loss=0.0474  
+Epoch 23   Iteration 200  6.32sample/s Loss=0.0439  
+Epoch 23   Iteration 300  6.33sample/s Loss=0.0432  
+Epoch 23   Iteration 400  6.29sample/s Loss=0.0473  
+Epoch 23   Iteration 500  6.29sample/s Loss=0.0463  
+Epoch 23   Iteration 600  6.31sample/s Loss=0.0479  
+Epoch 23   Iteration 700  6.32sample/s Loss=0.0431  
+Epoch 23   Iteration 800  6.39sample/s Loss=0.0419  
+Epoch 23   Iteration 900  6.28sample/s Loss=0.0462  
+Epoch 23   Iteration 1000 6.34sample/s Loss=0.0422  
+Epoch 23   Iteration 1100 6.35sample/s Loss=0.0456  
+Epoch 23   Iteration 1200 6.36sample/s Loss=0.0423  
+Epoch 23   Iteration 1300 6.37sample/s Loss=0.0406  
+Epoch 23   Iteration 1400 6.34sample/s Loss=0.0427  
+Epoch 23   Iteration 1500 6.40sample/s Loss=0.0387  
+Epoch 23   Iteration 1600 6.30sample/s Loss=0.0415  
+Epoch 23   Iteration 1700 6.32sample/s Loss=0.0380  
+Epoch 23   Iteration 1800 6.27sample/s Loss=0.0376  
+Epoch 23   Iteration 1900 6.40sample/s Loss=0.0384  
+Epoch 23   Iteration 2000 6.25sample/s Loss=0.0380  
+Epoch 23   Loss: 0.0426
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4343±0.2611, r = 0.4343±0.2611, f1 = 0.4343±0.2611, cvg = 0.1084
+bicycle: p = 0.5929±0.2613, r = 0.5929±0.2613, f1 = 0.5929±0.2613, cvg = 0.7257
+bird: p = 0.6436±0.3176, r = 0.6436±0.3176, f1 = 0.6436±0.3176, cvg = 0.1418
+boat: p = 0.5273±0.3522, r = 0.5273±0.3522, f1 = 0.5273±0.3522, cvg = 0.2505
+bottle: p = 0.7785±0.3225, r = 0.7785±0.3225, f1 = 0.7785±0.3225, cvg = 0.1396
+bus: p = 0.7117±0.3531, r = 0.7117±0.3531, f1 = 0.7117±0.3531, cvg = 0.7142
+car: p = 0.6261±0.3053, r = 0.6261±0.3053, f1 = 0.6261±0.3053, cvg = 0.0761
+cat: p = 0.6684±0.2960, r = 0.6684±0.2960, f1 = 0.6684±0.2960, cvg = 0.1974
+chair: p = 0.3990±0.3001, r = 0.3990±0.3001, f1 = 0.3990±0.3001, cvg = 0.4895
+cow: p = 0.6143±0.2620, r = 0.6143±0.2620, f1 = 0.6143±0.2620, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6412±0.2814, r = 0.6412±0.2814, f1 = 0.6412±0.2814, cvg = 0.0929
+horse: p = 0.6309±0.2431, r = 0.6309±0.2431, f1 = 0.6309±0.2431, cvg = 0.9495
+motorbike: p = 0.5886±0.2760, r = 0.5886±0.2760, f1 = 0.5886±0.2760, cvg = 0.5627
+person: p = 0.3973±0.2258, r = 0.3973±0.2258, f1 = 0.3973±0.2258, cvg = 0.0827
+pottedplant: p = 0.7946±0.2849, r = 0.7946±0.2849, f1 = 0.7946±0.2849, cvg = 0.2057
+sheep: p = 0.6490±0.2836, r = 0.6490±0.2836, f1 = 0.6490±0.2836, cvg = 0.2944
+sofa: p = 0.5281±0.3610, r = 0.5281±0.3610, f1 = 0.5281±0.3610, cvg = 0.9643
+train: p = 0.8005±0.3080, r = 0.8005±0.3080, f1 = 0.8005±0.3080, cvg = 0.6768
+tvmonitor: p = 0.8928±0.2635, r = 0.8928±0.2635, f1 = 0.8928±0.2635, cvg = 0.2442
+average accuracy: p = 0.6260±0.2941, r = 0.6260±0.2941, f1 = 0.6260±0.2941
+Evaluation complete in 27m 4s
+Predict time
+aeroplane = 0.0941±0.0049
+bicycle = 0.0980±0.0031
+bird = 0.0817±0.0034
+boat = 0.0763±0.0027
+bottle = 0.0880±0.0025
+bus = 0.0755±0.0021
+car = 0.0782±0.0034
+cat = 0.0902±0.0049
+chair = 0.0852±0.0035
+cow = 0.0953±0.0051
+diningtable = 0.0801±0.0029
+dog = 0.0890±0.0047
+horse = 0.0940±0.0051
+motorbike = 0.0855±0.0044
+person = 0.1046±0.0057
+pottedplant = 0.0765±0.0019
+sheep = 0.0862±0.0051
+sofa = 0.0822±0.0027
+train = 0.0702±0.0019
+tvmonitor = 0.0719±0.0015
+average time = 0.0856±0.0101
+gt perm mat cache deleted
+Epoch 24/29
+----------
+lr = 2.00e-05
+Epoch 24   Iteration 100  6.29sample/s Loss=0.0435  
+Epoch 24   Iteration 200  6.29sample/s Loss=0.0405  
+Epoch 24   Iteration 300  6.32sample/s Loss=0.0403  
+Epoch 24   Iteration 400  6.28sample/s Loss=0.0434  
+Epoch 24   Iteration 500  6.25sample/s Loss=0.0429  
+Epoch 24   Iteration 600  6.25sample/s Loss=0.0441  
+Epoch 24   Iteration 700  6.32sample/s Loss=0.0400  
+Epoch 24   Iteration 800  6.35sample/s Loss=0.0391  
+Epoch 24   Iteration 900  6.21sample/s Loss=0.0428  
+Epoch 24   Iteration 1000 6.34sample/s Loss=0.0396  
+Epoch 24   Iteration 1100 6.25sample/s Loss=0.0426  
+Epoch 24   Iteration 1200 6.29sample/s Loss=0.0396  
+Epoch 24   Iteration 1300 6.31sample/s Loss=0.0380  
+Epoch 24   Iteration 1400 6.29sample/s Loss=0.0386  
+Epoch 24   Iteration 1500 6.35sample/s Loss=0.0360  
+Epoch 24   Iteration 1600 6.21sample/s Loss=0.0391  
+Epoch 24   Iteration 1700 6.25sample/s Loss=0.0358  
+Epoch 24   Iteration 1800 6.29sample/s Loss=0.0352  
+Epoch 24   Iteration 1900 6.36sample/s Loss=0.0364  
+Epoch 24   Iteration 2000 6.25sample/s Loss=0.0360  
+Epoch 24   Loss: 0.0397
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4337±0.2628, r = 0.4337±0.2628, f1 = 0.4337±0.2628, cvg = 0.1084
+bicycle: p = 0.5913±0.2617, r = 0.5913±0.2617, f1 = 0.5913±0.2617, cvg = 0.7257
+bird: p = 0.6439±0.3178, r = 0.6439±0.3178, f1 = 0.6439±0.3178, cvg = 0.1418
+boat: p = 0.5274±0.3518, r = 0.5274±0.3518, f1 = 0.5274±0.3518, cvg = 0.2505
+bottle: p = 0.7796±0.3221, r = 0.7796±0.3221, f1 = 0.7796±0.3221, cvg = 0.1396
+bus: p = 0.7121±0.3527, r = 0.7121±0.3527, f1 = 0.7121±0.3527, cvg = 0.7142
+car: p = 0.6259±0.3062, r = 0.6259±0.3062, f1 = 0.6259±0.3062, cvg = 0.0761
+cat: p = 0.6689±0.2961, r = 0.6689±0.2961, f1 = 0.6689±0.2961, cvg = 0.1974
+chair: p = 0.4000±0.3001, r = 0.4000±0.3001, f1 = 0.4000±0.3001, cvg = 0.4895
+cow: p = 0.6150±0.2614, r = 0.6150±0.2614, f1 = 0.6150±0.2614, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6395±0.2828, r = 0.6395±0.2828, f1 = 0.6395±0.2828, cvg = 0.0929
+horse: p = 0.6294±0.2434, r = 0.6294±0.2434, f1 = 0.6294±0.2434, cvg = 0.9495
+motorbike: p = 0.5892±0.2768, r = 0.5892±0.2768, f1 = 0.5892±0.2768, cvg = 0.5627
+person: p = 0.3974±0.2269, r = 0.3974±0.2269, f1 = 0.3974±0.2269, cvg = 0.0827
+pottedplant: p = 0.7930±0.2856, r = 0.7930±0.2856, f1 = 0.7930±0.2856, cvg = 0.2057
+sheep: p = 0.6484±0.2837, r = 0.6484±0.2837, f1 = 0.6484±0.2837, cvg = 0.2944
+sofa: p = 0.5281±0.3610, r = 0.5281±0.3610, f1 = 0.5281±0.3610, cvg = 0.9643
+train: p = 0.7999±0.3079, r = 0.7999±0.3079, f1 = 0.7999±0.3079, cvg = 0.6768
+tvmonitor: p = 0.8919±0.2636, r = 0.8919±0.2636, f1 = 0.8919±0.2636, cvg = 0.2442
+average accuracy: p = 0.6258±0.2944, r = 0.6258±0.2944, f1 = 0.6258±0.2944
+Evaluation complete in 27m 11s
+Predict time
+aeroplane = 0.0939±0.0043
+bicycle = 0.0988±0.0036
+bird = 0.0818±0.0035
+boat = 0.0768±0.0028
+bottle = 0.0886±0.0028
+bus = 0.0758±0.0027
+car = 0.0780±0.0034
+cat = 0.0910±0.0046
+chair = 0.0859±0.0039
+cow = 0.0954±0.0049
+diningtable = 0.0762±0.0002
+dog = 0.0899±0.0044
+horse = 0.0954±0.0055
+motorbike = 0.0858±0.0035
+person = 0.1056±0.0070
+pottedplant = 0.0768±0.0020
+sheep = 0.0858±0.0046
+sofa = 0.0806±0.0032
+train = 0.0700±0.0018
+tvmonitor = 0.0720±0.0017
+average time = 0.0860±0.0103
+gt perm mat cache deleted
+Epoch 25/29
+----------
+lr = 2.00e-05
+Epoch 25   Iteration 100  6.30sample/s Loss=0.0407  
+Epoch 25   Iteration 200  6.31sample/s Loss=0.0379  
+Epoch 25   Iteration 300  6.32sample/s Loss=0.0380  
+Epoch 25   Iteration 400  6.28sample/s Loss=0.0410  
+Epoch 25   Iteration 500  6.25sample/s Loss=0.0405  
+Epoch 25   Iteration 600  6.27sample/s Loss=0.0411  
+Epoch 25   Iteration 700  6.31sample/s Loss=0.0376  
+Epoch 25   Iteration 800  6.34sample/s Loss=0.0366  
+Epoch 25   Iteration 900  6.22sample/s Loss=0.0402  
+Epoch 25   Iteration 1000 6.37sample/s Loss=0.0373  
+Epoch 25   Iteration 1100 6.24sample/s Loss=0.0399  
+Epoch 25   Iteration 1200 6.27sample/s Loss=0.0373  
+Epoch 25   Iteration 1300 6.31sample/s Loss=0.0359  
+Epoch 25   Iteration 1400 6.28sample/s Loss=0.0364  
+Epoch 25   Iteration 1500 6.34sample/s Loss=0.0341  
+Epoch 25   Iteration 1600 6.20sample/s Loss=0.0370  
+Epoch 25   Iteration 1700 6.23sample/s Loss=0.0340  
+Epoch 25   Iteration 1800 6.27sample/s Loss=0.0333  
+Epoch 25   Iteration 1900 6.34sample/s Loss=0.0347  
+Epoch 25   Iteration 2000 6.22sample/s Loss=0.0339  
+Epoch 25   Loss: 0.0374
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4316±0.2628, r = 0.4316±0.2628, f1 = 0.4316±0.2628, cvg = 0.1084
+bicycle: p = 0.5904±0.2625, r = 0.5904±0.2625, f1 = 0.5904±0.2625, cvg = 0.7257
+bird: p = 0.6420±0.3170, r = 0.6420±0.3170, f1 = 0.6420±0.3170, cvg = 0.1418
+boat: p = 0.5255±0.3516, r = 0.5255±0.3516, f1 = 0.5255±0.3516, cvg = 0.2505
+bottle: p = 0.7790±0.3220, r = 0.7790±0.3220, f1 = 0.7790±0.3220, cvg = 0.1396
+bus: p = 0.7137±0.3518, r = 0.7137±0.3518, f1 = 0.7137±0.3518, cvg = 0.7142
+car: p = 0.6266±0.3076, r = 0.6266±0.3076, f1 = 0.6266±0.3076, cvg = 0.0761
+cat: p = 0.6688±0.2971, r = 0.6688±0.2971, f1 = 0.6688±0.2971, cvg = 0.1974
+chair: p = 0.3983±0.2987, r = 0.3983±0.2987, f1 = 0.3983±0.2987, cvg = 0.4895
+cow: p = 0.6152±0.2613, r = 0.6152±0.2613, f1 = 0.6152±0.2613, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6387±0.2824, r = 0.6387±0.2824, f1 = 0.6387±0.2824, cvg = 0.0929
+horse: p = 0.6289±0.2440, r = 0.6289±0.2440, f1 = 0.6289±0.2440, cvg = 0.9495
+motorbike: p = 0.5886±0.2767, r = 0.5886±0.2767, f1 = 0.5886±0.2767, cvg = 0.5627
+person: p = 0.3961±0.2272, r = 0.3961±0.2272, f1 = 0.3961±0.2272, cvg = 0.0827
+pottedplant: p = 0.7944±0.2856, r = 0.7944±0.2856, f1 = 0.7944±0.2856, cvg = 0.2057
+sheep: p = 0.6473±0.2838, r = 0.6473±0.2838, f1 = 0.6473±0.2838, cvg = 0.2944
+sofa: p = 0.5188±0.3647, r = 0.5188±0.3647, f1 = 0.5188±0.3647, cvg = 0.9643
+train: p = 0.7999±0.3079, r = 0.7999±0.3079, f1 = 0.7999±0.3079, cvg = 0.6768
+tvmonitor: p = 0.8924±0.2633, r = 0.8924±0.2633, f1 = 0.8924±0.2633, cvg = 0.2442
+average accuracy: p = 0.6249±0.2946, r = 0.6249±0.2946, f1 = 0.6249±0.2946
+Evaluation complete in 27m 16s
+Predict time
+aeroplane = 0.0954±0.0049
+bicycle = 0.0992±0.0036
+bird = 0.0824±0.0031
+boat = 0.0770±0.0035
+bottle = 0.0894±0.0027
+bus = 0.0760±0.0100
+car = 0.0784±0.0031
+cat = 0.0907±0.0047
+chair = 0.0855±0.0036
+cow = 0.0958±0.0051
+diningtable = 0.0754±0.0003
+dog = 0.0899±0.0053
+horse = 0.0950±0.0049
+motorbike = 0.0862±0.0036
+person = 0.1063±0.0070
+pottedplant = 0.0770±0.0019
+sheep = 0.0857±0.0046
+sofa = 0.0815±0.0022
+train = 0.0698±0.0019
+tvmonitor = 0.0725±0.0023
+average time = 0.0862±0.0107
+gt perm mat cache deleted
+Epoch 26/29
+----------
+lr = 2.00e-05
+Epoch 26   Iteration 100  6.28sample/s Loss=0.0385  
+Epoch 26   Iteration 200  6.27sample/s Loss=0.0358  
+Epoch 26   Iteration 300  6.32sample/s Loss=0.0360  
+Epoch 26   Iteration 400  6.26sample/s Loss=0.0380  
+Epoch 26   Iteration 500  6.22sample/s Loss=0.0383  
+Epoch 26   Iteration 600  6.21sample/s Loss=0.0386  
+Epoch 26   Iteration 700  6.20sample/s Loss=0.0354  
+Epoch 26   Iteration 800  6.33sample/s Loss=0.0347  
+Epoch 26   Iteration 900  6.21sample/s Loss=0.0380  
+Epoch 26   Iteration 1000 6.31sample/s Loss=0.0354  
+Epoch 26   Iteration 1100 6.22sample/s Loss=0.0379  
+Epoch 26   Iteration 1200 6.28sample/s Loss=0.0354  
+Epoch 26   Iteration 1300 6.30sample/s Loss=0.0341  
+Epoch 26   Iteration 1400 6.26sample/s Loss=0.0346  
+Epoch 26   Iteration 1500 6.31sample/s Loss=0.0324  
+Epoch 26   Iteration 1600 6.21sample/s Loss=0.0353  
+Epoch 26   Iteration 1700 6.24sample/s Loss=0.0324  
+Epoch 26   Iteration 1800 6.26sample/s Loss=0.0318  
+Epoch 26   Iteration 1900 6.30sample/s Loss=0.0333  
+Epoch 26   Iteration 2000 6.23sample/s Loss=0.0323  
+Epoch 26   Loss: 0.0354
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4307±0.2638, r = 0.4307±0.2638, f1 = 0.4307±0.2638, cvg = 0.1084
+bicycle: p = 0.5901±0.2628, r = 0.5901±0.2628, f1 = 0.5901±0.2628, cvg = 0.7257
+bird: p = 0.6421±0.3162, r = 0.6421±0.3162, f1 = 0.6421±0.3162, cvg = 0.1418
+boat: p = 0.5264±0.3516, r = 0.5264±0.3516, f1 = 0.5264±0.3516, cvg = 0.2505
+bottle: p = 0.7793±0.3226, r = 0.7793±0.3226, f1 = 0.7793±0.3226, cvg = 0.1396
+bus: p = 0.7120±0.3520, r = 0.7120±0.3520, f1 = 0.7120±0.3520, cvg = 0.7142
+car: p = 0.6264±0.3074, r = 0.6264±0.3074, f1 = 0.6264±0.3074, cvg = 0.0761
+cat: p = 0.6700±0.2962, r = 0.6700±0.2962, f1 = 0.6700±0.2962, cvg = 0.1974
+chair: p = 0.3982±0.2983, r = 0.3982±0.2983, f1 = 0.3982±0.2983, cvg = 0.4895
+cow: p = 0.6159±0.2617, r = 0.6159±0.2617, f1 = 0.6159±0.2617, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6379±0.2829, r = 0.6379±0.2829, f1 = 0.6379±0.2829, cvg = 0.0929
+horse: p = 0.6291±0.2433, r = 0.6291±0.2433, f1 = 0.6291±0.2433, cvg = 0.9495
+motorbike: p = 0.5873±0.2763, r = 0.5873±0.2763, f1 = 0.5873±0.2763, cvg = 0.5627
+person: p = 0.3965±0.2264, r = 0.3965±0.2264, f1 = 0.3965±0.2264, cvg = 0.0827
+pottedplant: p = 0.7924±0.2845, r = 0.7924±0.2845, f1 = 0.7924±0.2845, cvg = 0.2057
+sheep: p = 0.6468±0.2836, r = 0.6468±0.2836, f1 = 0.6468±0.2836, cvg = 0.2944
+sofa: p = 0.5188±0.3647, r = 0.5188±0.3647, f1 = 0.5188±0.3647, cvg = 0.9643
+train: p = 0.7999±0.3079, r = 0.7999±0.3079, f1 = 0.7999±0.3079, cvg = 0.6768
+tvmonitor: p = 0.8924±0.2633, r = 0.8924±0.2633, f1 = 0.8924±0.2633, cvg = 0.2442
+average accuracy: p = 0.6247±0.2945, r = 0.6247±0.2945, f1 = 0.6247±0.2945
+Evaluation complete in 27m 18s
+Predict time
+aeroplane = 0.0956±0.0051
+bicycle = 0.0994±0.0034
+bird = 0.0821±0.0032
+boat = 0.0770±0.0028
+bottle = 0.0889±0.0025
+bus = 0.0763±0.0025
+car = 0.0789±0.0033
+cat = 0.0905±0.0047
+chair = 0.0860±0.0037
+cow = 0.0961±0.0050
+diningtable = 0.0778±0.0003
+dog = 0.0901±0.0050
+horse = 0.0951±0.0056
+motorbike = 0.0863±0.0036
+person = 0.1067±0.0073
+pottedplant = 0.0774±0.0023
+sheep = 0.0866±0.0049
+sofa = 0.0825±0.0026
+train = 0.0698±0.0108
+tvmonitor = 0.0723±0.0018
+average time = 0.0864±0.0108
+gt perm mat cache deleted
+Epoch 27/29
+----------
+lr = 2.00e-05
+Epoch 27   Iteration 100  6.29sample/s Loss=0.0366  
+Epoch 27   Iteration 200  6.34sample/s Loss=0.0340  
+Epoch 27   Iteration 300  6.34sample/s Loss=0.0343  
+Epoch 27   Iteration 400  6.33sample/s Loss=0.0353  
+Epoch 27   Iteration 500  6.26sample/s Loss=0.0365  
+Epoch 27   Iteration 600  6.34sample/s Loss=0.0367  
+Epoch 27   Iteration 700  6.34sample/s Loss=0.0337  
+Epoch 27   Iteration 800  6.38sample/s Loss=0.0328  
+Epoch 27   Iteration 900  6.28sample/s Loss=0.0361  
+Epoch 27   Iteration 1000 6.41sample/s Loss=0.0338  
+Epoch 27   Iteration 1100 6.30sample/s Loss=0.0361  
+Epoch 27   Iteration 1200 6.37sample/s Loss=0.0337  
+Epoch 27   Iteration 1300 6.36sample/s Loss=0.0323  
+Epoch 27   Iteration 1400 6.34sample/s Loss=0.0327  
+Epoch 27   Iteration 1500 6.40sample/s Loss=0.0310  
+Epoch 27   Iteration 1600 6.28sample/s Loss=0.0337  
+Epoch 27   Iteration 1700 6.26sample/s Loss=0.0310  
+Epoch 27   Iteration 1800 6.32sample/s Loss=0.0304  
+Epoch 27   Iteration 1900 6.35sample/s Loss=0.0317  
+Epoch 27   Iteration 2000 6.28sample/s Loss=0.0310  
+Epoch 27   Loss: 0.0337
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4304±0.2631, r = 0.4304±0.2631, f1 = 0.4304±0.2631, cvg = 0.1084
+bicycle: p = 0.5895±0.2631, r = 0.5895±0.2631, f1 = 0.5895±0.2631, cvg = 0.7257
+bird: p = 0.6420±0.3162, r = 0.6420±0.3162, f1 = 0.6420±0.3162, cvg = 0.1418
+boat: p = 0.5243±0.3519, r = 0.5243±0.3519, f1 = 0.5243±0.3519, cvg = 0.2505
+bottle: p = 0.7797±0.3218, r = 0.7797±0.3218, f1 = 0.7797±0.3218, cvg = 0.1396
+bus: p = 0.7122±0.3519, r = 0.7122±0.3519, f1 = 0.7122±0.3519, cvg = 0.7142
+car: p = 0.6261±0.3080, r = 0.6261±0.3080, f1 = 0.6261±0.3080, cvg = 0.0761
+cat: p = 0.6689±0.2965, r = 0.6689±0.2965, f1 = 0.6689±0.2965, cvg = 0.1974
+chair: p = 0.3973±0.2974, r = 0.3973±0.2974, f1 = 0.3973±0.2974, cvg = 0.4895
+cow: p = 0.6157±0.2617, r = 0.6157±0.2617, f1 = 0.6157±0.2617, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6378±0.2825, r = 0.6378±0.2825, f1 = 0.6378±0.2825, cvg = 0.0929
+horse: p = 0.6281±0.2433, r = 0.6281±0.2433, f1 = 0.6281±0.2433, cvg = 0.9495
+motorbike: p = 0.5879±0.2762, r = 0.5879±0.2762, f1 = 0.5879±0.2762, cvg = 0.5627
+person: p = 0.3964±0.2259, r = 0.3964±0.2259, f1 = 0.3964±0.2259, cvg = 0.0827
+pottedplant: p = 0.7926±0.2845, r = 0.7926±0.2845, f1 = 0.7926±0.2845, cvg = 0.2057
+sheep: p = 0.6445±0.2835, r = 0.6445±0.2835, f1 = 0.6445±0.2835, cvg = 0.2944
+sofa: p = 0.5188±0.3647, r = 0.5188±0.3647, f1 = 0.5188±0.3647, cvg = 0.9643
+train: p = 0.7987±0.3079, r = 0.7987±0.3079, f1 = 0.7987±0.3079, cvg = 0.6768
+tvmonitor: p = 0.8917±0.2639, r = 0.8917±0.2639, f1 = 0.8917±0.2639, cvg = 0.2442
+average accuracy: p = 0.6242±0.2944, r = 0.6242±0.2944, f1 = 0.6242±0.2944
+Evaluation complete in 27m 20s
+Predict time
+aeroplane = 0.0948±0.0047
+bicycle = 0.0991±0.0031
+bird = 0.0819±0.0032
+boat = 0.0769±0.0027
+bottle = 0.0889±0.0017
+bus = 0.0763±0.0025
+car = 0.0786±0.0033
+cat = 0.0909±0.0048
+chair = 0.0865±0.0042
+cow = 0.0956±0.0052
+diningtable = 0.0765±0.0002
+dog = 0.0907±0.0043
+horse = 0.0955±0.0054
+motorbike = 0.0866±0.0036
+person = 0.1068±0.0067
+pottedplant = 0.0776±0.0023
+sheep = 0.0859±0.0048
+sofa = 0.0830±0.0037
+train = 0.0703±0.0020
+tvmonitor = 0.0725±0.0014
+average time = 0.0864±0.0104
+gt perm mat cache deleted
+Epoch 28/29
+----------
+lr = 2.00e-05
+Epoch 28   Iteration 100  6.27sample/s Loss=0.0348  
+Epoch 28   Iteration 200  6.28sample/s Loss=0.0325  
+Epoch 28   Iteration 300  6.30sample/s Loss=0.0328  
+Epoch 28   Iteration 400  6.26sample/s Loss=0.0330  
+Epoch 28   Iteration 500  6.26sample/s Loss=0.0349  
+Epoch 28   Iteration 600  6.28sample/s Loss=0.0349  
+Epoch 28   Iteration 700  6.25sample/s Loss=0.0322  
+Epoch 28   Iteration 800  6.35sample/s Loss=0.0314  
+Epoch 28   Iteration 900  6.26sample/s Loss=0.0345  
+Epoch 28   Iteration 1000 6.36sample/s Loss=0.0323  
+Epoch 28   Iteration 1100 6.25sample/s Loss=0.0343  
+Epoch 28   Iteration 1200 6.32sample/s Loss=0.0323  
+Epoch 28   Iteration 1300 6.32sample/s Loss=0.0310  
+Epoch 28   Iteration 1400 6.29sample/s Loss=0.0314  
+Epoch 28   Iteration 1500 6.36sample/s Loss=0.0298  
+Epoch 28   Iteration 1600 6.27sample/s Loss=0.0324  
+Epoch 28   Iteration 1700 6.25sample/s Loss=0.0298  
+Epoch 28   Iteration 1800 6.27sample/s Loss=0.0292  
+Epoch 28   Iteration 1900 6.37sample/s Loss=0.0305  
+Epoch 28   Iteration 2000 6.23sample/s Loss=0.0298  
+Epoch 28   Loss: 0.0322
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4295±0.2621, r = 0.4295±0.2621, f1 = 0.4295±0.2621, cvg = 0.1084
+bicycle: p = 0.5882±0.2632, r = 0.5882±0.2632, f1 = 0.5882±0.2632, cvg = 0.7257
+bird: p = 0.6422±0.3164, r = 0.6422±0.3164, f1 = 0.6422±0.3164, cvg = 0.1418
+boat: p = 0.5233±0.3528, r = 0.5233±0.3528, f1 = 0.5233±0.3528, cvg = 0.2505
+bottle: p = 0.7801±0.3217, r = 0.7801±0.3217, f1 = 0.7801±0.3217, cvg = 0.1396
+bus: p = 0.7119±0.3508, r = 0.7119±0.3508, f1 = 0.7119±0.3508, cvg = 0.7142
+car: p = 0.6258±0.3082, r = 0.6258±0.3082, f1 = 0.6258±0.3082, cvg = 0.0761
+cat: p = 0.6692±0.2967, r = 0.6692±0.2967, f1 = 0.6692±0.2967, cvg = 0.1974
+chair: p = 0.3955±0.2965, r = 0.3955±0.2965, f1 = 0.3955±0.2965, cvg = 0.4895
+cow: p = 0.6153±0.2609, r = 0.6153±0.2609, f1 = 0.6153±0.2609, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6373±0.2821, r = 0.6373±0.2821, f1 = 0.6373±0.2821, cvg = 0.0929
+horse: p = 0.6271±0.2439, r = 0.6271±0.2439, f1 = 0.6271±0.2439, cvg = 0.9495
+motorbike: p = 0.5875±0.2760, r = 0.5875±0.2760, f1 = 0.5875±0.2760, cvg = 0.5627
+person: p = 0.3969±0.2255, r = 0.3969±0.2255, f1 = 0.3969±0.2255, cvg = 0.0827
+pottedplant: p = 0.7932±0.2840, r = 0.7932±0.2840, f1 = 0.7932±0.2840, cvg = 0.2057
+sheep: p = 0.6441±0.2839, r = 0.6441±0.2839, f1 = 0.6441±0.2839, cvg = 0.2944
+sofa: p = 0.5188±0.3647, r = 0.5188±0.3647, f1 = 0.5188±0.3647, cvg = 0.9643
+train: p = 0.7995±0.3078, r = 0.7995±0.3078, f1 = 0.7995±0.3078, cvg = 0.6768
+tvmonitor: p = 0.8917±0.2639, r = 0.8917±0.2639, f1 = 0.8917±0.2639, cvg = 0.2442
+average accuracy: p = 0.6239±0.2943, r = 0.6239±0.2943, f1 = 0.6239±0.2943
+Evaluation complete in 27m 26s
+Predict time
+aeroplane = 0.0952±0.0046
+bicycle = 0.0999±0.0081
+bird = 0.0821±0.0035
+boat = 0.0771±0.0028
+bottle = 0.0892±0.0022
+bus = 0.0761±0.0021
+car = 0.0786±0.0030
+cat = 0.0919±0.0045
+chair = 0.0868±0.0037
+cow = 0.0964±0.0054
+diningtable = 0.0770±0.0001
+dog = 0.0910±0.0049
+horse = 0.0956±0.0058
+motorbike = 0.0868±0.0038
+person = 0.1066±0.0067
+pottedplant = 0.0779±0.0023
+sheep = 0.0869±0.0047
+sofa = 0.0819±0.0016
+train = 0.0705±0.0022
+tvmonitor = 0.0723±0.0016
+average time = 0.0867±0.0106
+gt perm mat cache deleted
+Epoch 29/29
+----------
+lr = 2.00e-05
+Epoch 29   Iteration 100  6.27sample/s Loss=0.0331  
+Epoch 29   Iteration 200  6.29sample/s Loss=0.0311  
+Epoch 29   Iteration 300  6.32sample/s Loss=0.0315  
+Epoch 29   Iteration 400  6.25sample/s Loss=0.0312  
+Epoch 29   Iteration 500  6.22sample/s Loss=0.0334  
+Epoch 29   Iteration 600  6.24sample/s Loss=0.0334  
+Epoch 29   Iteration 700  6.28sample/s Loss=0.0308  
+Epoch 29   Iteration 800  6.34sample/s Loss=0.0301  
+Epoch 29   Iteration 900  6.24sample/s Loss=0.0330  
+Epoch 29   Iteration 1000 6.35sample/s Loss=0.0310  
+Epoch 29   Iteration 1100 6.24sample/s Loss=0.0329  
+Epoch 29   Iteration 1200 6.32sample/s Loss=0.0309  
+Epoch 29   Iteration 1300 6.33sample/s Loss=0.0298  
+Epoch 29   Iteration 1400 6.30sample/s Loss=0.0300  
+Epoch 29   Iteration 1500 6.34sample/s Loss=0.0287  
+Epoch 29   Iteration 1600 6.23sample/s Loss=0.0312  
+Epoch 29   Iteration 1700 6.24sample/s Loss=0.0286  
+Epoch 29   Iteration 1800 6.28sample/s Loss=0.0281  
+Epoch 29   Iteration 1900 6.32sample/s Loss=0.0294  
+Epoch 29   Iteration 2000 6.23sample/s Loss=0.0287  
+Epoch 29   Loss: 0.0308
+
+Start evaluation...
+Matching accuracy
+aeroplane: p = 0.4299±0.2624, r = 0.4299±0.2624, f1 = 0.4299±0.2624, cvg = 0.1084
+bicycle: p = 0.5891±0.2629, r = 0.5891±0.2629, f1 = 0.5891±0.2629, cvg = 0.7257
+bird: p = 0.6415±0.3158, r = 0.6415±0.3158, f1 = 0.6415±0.3158, cvg = 0.1418
+boat: p = 0.5224±0.3525, r = 0.5224±0.3525, f1 = 0.5224±0.3525, cvg = 0.2505
+bottle: p = 0.7797±0.3225, r = 0.7797±0.3225, f1 = 0.7797±0.3225, cvg = 0.1396
+bus: p = 0.7115±0.3518, r = 0.7115±0.3518, f1 = 0.7115±0.3518, cvg = 0.7142
+car: p = 0.6255±0.3081, r = 0.6255±0.3081, f1 = 0.6255±0.3081, cvg = 0.0761
+cat: p = 0.6679±0.2977, r = 0.6679±0.2977, f1 = 0.6679±0.2977, cvg = 0.1974
+chair: p = 0.3958±0.2961, r = 0.3958±0.2961, f1 = 0.3958±0.2961, cvg = 0.4895
+cow: p = 0.6141±0.2603, r = 0.6141±0.2603, f1 = 0.6141±0.2603, cvg = 0.6519
+diningtable: p = 0.6017±0.3244, r = 0.6017±0.3244, f1 = 0.6017±0.3244, cvg = 1.0000
+dog: p = 0.6372±0.2818, r = 0.6372±0.2818, f1 = 0.6372±0.2818, cvg = 0.0929
+horse: p = 0.6278±0.2430, r = 0.6278±0.2430, f1 = 0.6278±0.2430, cvg = 0.9495
+motorbike: p = 0.5867±0.2767, r = 0.5867±0.2767, f1 = 0.5867±0.2767, cvg = 0.5627
+person: p = 0.3952±0.2250, r = 0.3952±0.2250, f1 = 0.3952±0.2250, cvg = 0.0827
+pottedplant: p = 0.7937±0.2837, r = 0.7937±0.2837, f1 = 0.7937±0.2837, cvg = 0.2057
+sheep: p = 0.6443±0.2832, r = 0.6443±0.2832, f1 = 0.6443±0.2832, cvg = 0.2944
+sofa: p = 0.5241±0.3644, r = 0.5241±0.3644, f1 = 0.5241±0.3644, cvg = 0.9643
+train: p = 0.7987±0.3079, r = 0.7987±0.3079, f1 = 0.7987±0.3079, cvg = 0.6768
+tvmonitor: p = 0.8919±0.2632, r = 0.8919±0.2632, f1 = 0.8919±0.2632, cvg = 0.2442
+average accuracy: p = 0.6239±0.2942, r = 0.6239±0.2942, f1 = 0.6239±0.2942
+Evaluation complete in 27m 24s
+Predict time
+aeroplane = 0.0961±0.0052
+bicycle = 0.0990±0.0034
+bird = 0.0821±0.0030
+boat = 0.0769±0.0026
+bottle = 0.0892±0.0018
+bus = 0.0761±0.0021
+car = 0.0787±0.0029
+cat = 0.0911±0.0041
+chair = 0.0865±0.0042
+cow = 0.0971±0.0052
+diningtable = 0.0770±0.0004
+dog = 0.0904±0.0041
+horse = 0.0954±0.0054
+motorbike = 0.0869±0.0040
+person = 0.1067±0.0066
+pottedplant = 0.0779±0.0023
+sheep = 0.0864±0.0047
+sofa = 0.0823±0.0019
+train = 0.0703±0.0022
+tvmonitor = 0.0725±0.0019
+average time = 0.0866±0.0105
+gt perm mat cache deleted
+Training complete in 34h 47m 22s
